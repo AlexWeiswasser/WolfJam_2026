@@ -141,6 +141,7 @@ MonoBehaviour:
   speed: 1
   rb: {fileID: 1549073275999073230}
   rend: {fileID: 6446848341066206142}
+  col: {fileID: 9064407763488145250}
 --- !u!50 &1549073275999073230
 Rigidbody2D:
   serializedVersion: 5
