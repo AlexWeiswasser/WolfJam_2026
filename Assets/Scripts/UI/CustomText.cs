@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -40,6 +41,65 @@ public class CustomText : MonoBehaviour
         if (fillTextUGUI != null) fillTextUGUI.fontSize = size;
         if (outlineText != null) outlineText.fontSize = size;
         if (outlineTextUGUI != null) outlineTextUGUI.fontSize = size;
+    }
+
+    public Sequence DOColor(Color endColor, float duration)
+    {
+        Sequence sequence = DOTween.Sequence();
+        sequence.SetTarget(this);
+        float alpha = endColor.a;
+        if (fillText != null)
+        {
+            fillText.DOKill(true);
+            sequence.Insert(0, fillText.DOColor(endColor, duration));
+        }
+        if (fillTextUGUI != null)
+        {
+            fillTextUGUI.DOKill(true);
+            sequence.Insert(0, fillTextUGUI.DOColor(endColor, duration));
+        }
+
+        if (alpha != 1)
+        {
+            if (outlineText != null)
+            {
+                outlineText.DOKill(true);
+                sequence.Insert(0, outlineText.DOFade(alpha, duration));
+            }
+            if (outlineTextUGUI != null)
+            {
+                outlineTextUGUI.DOKill(true);
+                sequence.Insert(0, outlineTextUGUI.DOFade(alpha, duration));
+            }
+        }
+        return sequence;
+    }
+
+    public Sequence DOFade(float alpha, float duration)
+    {
+        Sequence sequence = DOTween.Sequence();
+        sequence.SetTarget(this);
+        if (fillText != null)
+        {
+            fillText.DOKill(true);
+            sequence.Insert(0, fillText.DOFade(alpha, duration));
+        }
+        if (fillTextUGUI != null)
+        {
+            fillTextUGUI.DOKill(true);
+            sequence.Insert(0, fillTextUGUI.DOFade(alpha, duration));
+        }
+        if (outlineText != null)
+        {
+            outlineText.DOKill(true);
+            sequence.Insert(0, outlineText.DOFade(alpha, duration));
+        }
+        if (outlineTextUGUI != null)
+        {
+            outlineTextUGUI.DOKill(true);
+            sequence.Insert(0, outlineTextUGUI.DOFade(alpha, duration));
+        }
+        return sequence;
     }
 
 	private static readonly HashSet<string> OutlineAllowedTags = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
