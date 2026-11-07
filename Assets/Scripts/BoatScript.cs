@@ -31,6 +31,8 @@ public class BoatScript : MonoBehaviour
 	[SerializeField] AudioClip[] skeletonSounds;
 	[SerializeField] AudioClip boatCrash;
     [SerializeField] AudioClip scorePoint;
+	[SerializeField] float sfxCooldown;
+	private bool canPlaySound = true;
 
 
 
@@ -97,29 +99,41 @@ public class BoatScript : MonoBehaviour
 	{
 		yield return new WaitForFixedUpdate(); 
 		currentBoostVelocity += (Vector2)transform.right * boostForce;
-		switch ((int)GetShipType())
+
+		if (canPlaySound)
 		{
-			case 0:
-				int sound = Random.Range(0, cowboySounds.Length);
-				MusicManager.Instance.PlaySfx(cowboySounds[sound]);
-                break;
-			case 1:
-                int sound1 = Random.Range(0, robotSounds.Length);
-                MusicManager.Instance.PlaySfx(robotSounds[sound1]);
-                break;
-			case 2:
-                int sound2 = Random.Range(0, vikingSounds.Length);
-                MusicManager.Instance.PlaySfx(vikingSounds[sound2]);
-                break;
-			case 3:
-                int sound3 = Random.Range(0, skeletonSounds.Length);
-                MusicManager.Instance.PlaySfx(skeletonSounds[sound3]);
-                break;
-			default:
-				break;
+			switch ((int)GetShipType())
+			{
+				case 0:
+					int sound = Random.Range(0, cowboySounds.Length);
+					MusicManager.Instance.PlaySfx(cowboySounds[sound]);
+					break;
+				case 1:
+					int sound1 = Random.Range(0, robotSounds.Length);
+					MusicManager.Instance.PlaySfx(robotSounds[sound1]);
+					break;
+				case 2:
+					int sound2 = Random.Range(0, vikingSounds.Length);
+					MusicManager.Instance.PlaySfx(vikingSounds[sound2]);
+					break;
+				case 3:
+					int sound3 = Random.Range(0, skeletonSounds.Length);
+					MusicManager.Instance.PlaySfx(skeletonSounds[sound3]);
+					break;
+				default:
+					break;
+			}
+			canPlaySound = false;
+			StartCoroutine(WaitForSeconds(sfxCooldown));
 		}
 		burstParticles.Clear();
 		burstParticles.Play();
+	}
+
+	IEnumerator WaitForSeconds(float seconds)
+	{
+		yield return new WaitForSeconds(seconds);
+		canPlaySound = true;
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
