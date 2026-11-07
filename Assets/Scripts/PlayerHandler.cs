@@ -9,7 +9,7 @@ public class PlayerHandler : MonoBehaviour
 
 	// Tracking 
 	Vector3 currentMousePos;
-	[SerializeField] float lightCircleSpeed;
+	[SerializeField] float lightBeamSpeed;
 
 	private void Update()
 	{
@@ -24,6 +24,13 @@ public class PlayerHandler : MonoBehaviour
 
 		Vector3 dir = (currentMousePos - lightHouse.position).normalized;
 		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-		lightHouse.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+		Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle);
+
+		lightHouse.transform.rotation = Quaternion.RotateTowards(
+			lightHouse.transform.rotation,
+			targetRotation,
+			lightBeamSpeed * Time.fixedDeltaTime
+		);
+
 	}
 }
