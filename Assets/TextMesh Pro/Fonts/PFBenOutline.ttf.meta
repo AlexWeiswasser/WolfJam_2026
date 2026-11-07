@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 74b97ef031f3ece4cb6ee2ab76984ba5
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - PFBenOutline
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 8dba93ac8e4ad5c42b9edfe9393f5917, type: 3}
+  customCharacters: 
+  fontRenderingMode: 2
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
