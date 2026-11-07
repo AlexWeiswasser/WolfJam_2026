@@ -21,6 +21,8 @@ public class BoatScript : MonoBehaviour
 	[SerializeField] Rigidbody2D rb;
 	[SerializeField] SpriteRenderer rend;
 	[SerializeField] Collider2D col;
+	[Tooltip ("Cowboy, Robot, Viking, Skeleton")]
+	[SerializeField] Sprite[] shipSprites;
 
 	// Movement
 	Vector2 currentVelocity = Vector2.zero;
@@ -36,21 +38,25 @@ public class BoatScript : MonoBehaviour
 		{
 			case 0:
 				{
+					rend.sprite = shipSprites[0];
 					rend.color = Color.green;
 				}
 				break;
 			case 1:
 				{
+					rend.sprite = shipSprites[1];
 					rend.color = Color.red;
 				}
 				break;
 			case 2:
 				{
+					rend.sprite = shipSprites[2];
 					rend.color = Color.yellow;
 				}
 				break;
 			case 3:
 				{
+					rend.sprite = shipSprites[3];
 					rend.color = Color.purple;
 				}
 				break;

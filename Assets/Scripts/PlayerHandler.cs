@@ -60,10 +60,18 @@ public class PlayerHandler : MonoBehaviour
 		}
 	}
 
-	private void ObtainShips()
+	private bool ObtainShips()
 	{
 		float radius = draggingCircle.GetScale().x / 2;
+
+		Debug.Log("Distance is " + Vector2.Distance(currentMousePos, draggingCircle.transform.position));
+		Debug.Log("Radius is " + radius);
+
+		if (Vector2.Distance(currentMousePos, draggingCircle.GetPosition()) < radius) 
+		return false;
+
 		currentBoats = Physics2D.OverlapCircleAll(draggingCircle.GetPosition(), radius, boatLayer);
+		return true;
 	}
 
 	private void DirectShips()
@@ -71,7 +79,7 @@ public class PlayerHandler : MonoBehaviour
 		Vector2 dir = (mouseEnd - mouseStart).normalized;
 		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-		ObtainShips();
+		if (!ObtainShips()) return;
 
 		foreach (Collider2D boat in currentBoats)
 		{
