@@ -3,6 +3,16 @@ using UnityEngine;
 
 public class BoatSpawner : MonoBehaviour
 {
+	private void OnEnable()
+	{
+		PointTracker.OnPointsGained += UpdatePoints;
+	}
+
+	private void OnDisable()
+	{
+		PointTracker.OnPointsGained -= UpdatePoints;
+	}
+
 	static float SignedAngle(float angle)
 	{
 		return Mathf.DeltaAngle(0f, angle);
@@ -113,5 +123,12 @@ public class BoatSpawner : MonoBehaviour
 			Instantiate(boatPrefabs[boatType], spawnPos, spawnRot);
 			currentTimesSpawned++;
 		}
+	}
+
+	void UpdatePoints(int pointsGained, Vector2Int range)
+	{
+		int mult = range.y / 500;
+		float tempTimeToSpawn = 10 - (mult * .5f);
+		timeTilSpawn = Mathf.Clamp(tempTimeToSpawn, 1, 10);
 	}
 }
