@@ -46,6 +46,7 @@ public class PlayerHandler : MonoBehaviour
 
 	public void MousePress(InputAction.CallbackContext context)
 	{
+		if (GameOverCanvas.GameOver) return;
 		if (context.performed)
 		{
 			if (PauseCanvas.Paused) return;

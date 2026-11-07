@@ -36,7 +36,7 @@ public class DraggingCircleScript : MonoBehaviour
 
     void Update()
     {
-        if (!lineVisible || PauseCanvas.Paused) return;
+        if (!lineVisible || PauseCanvas.Paused || GameOverCanvas.GameOver) return;
         
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 		mouseWorldPos.z = 0f;
