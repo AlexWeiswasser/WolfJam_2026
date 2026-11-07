@@ -229,6 +229,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fe333ee5992f8c34ebc8dbcc04504ce7, type: 3}
   - {fileID: 8300000, guid: 98bc3037d5682834b9a3b2ee9131f16f, type: 3}
   - {fileID: 8300000, guid: 870a428600af40944a29b5dff6c478ee, type: 3}
+  - {fileID: 8300000, guid: 7fc70702b62e9664582f6c1460925469, type: 3}
   boatCrash: {fileID: 8300000, guid: 127cf6137d961b54fbf56fd8c15123dc, type: 3}
   scorePoint: {fileID: 8300000, guid: 843fc4f231921ce42812a467453421bf, type: 3}
 --- !u!50 &3201462783268629543
