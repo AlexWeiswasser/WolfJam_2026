@@ -12,6 +12,7 @@ public class BoatScript : MonoBehaviour
 
 	[Header ("Stats")]
 	[SerializeField] float speed;
+	[SerializeField] float boostForce;
 	ShipType shipType;
 	public ShipType GetShipType() => shipType;
 
@@ -19,6 +20,11 @@ public class BoatScript : MonoBehaviour
 	[SerializeField] Rigidbody2D rb;
 	[SerializeField] SpriteRenderer rend;
 	[SerializeField] Collider2D col;
+
+	// Movement
+	Vector2 currentVelocity = Vector2.zero;
+	Vector2 currentBoostVelocity = Vector2.zero;
+	float boostDamping = .9f;
 
 	private void Awake()
 	{
@@ -29,7 +35,7 @@ public class BoatScript : MonoBehaviour
 		{
 			case 0:
 				{
-					rend.color = Color.darkKhaki;
+					rend.color = Color.green;
 				}
 				break;
 			case 1:
@@ -52,14 +58,15 @@ public class BoatScript : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		Vector3 newPosition = rb.position + (Vector2)transform.right * speed * Time.fixedDeltaTime;
-		rb.MovePosition(newPosition);
+		currentBoostVelocity *= boostDamping;
+		currentVelocity = rb.position + (Vector2)transform.right * speed * Time.fixedDeltaTime;
+		currentVelocity += currentBoostVelocity * Time.fixedDeltaTime;
+
+		rb.MovePosition(currentVelocity);
 	}
 
-	public void RotateBoat(float angle)
-	{
-		rb.MoveRotation(angle);
-	}
+	public void RotateBoat(float angle) { rb.MoveRotation(angle); }
+	public void BoostBoat() { currentBoostVelocity += (Vector2)transform.right * boostForce; }
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
