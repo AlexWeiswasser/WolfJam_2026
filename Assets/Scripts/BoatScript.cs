@@ -28,7 +28,7 @@ public class BoatScript : MonoBehaviour
 		{
 			case 0:
 				{
-					rend.color = Color.brown;
+					rend.color = Color.darkKhaki;
 				}
 				break;
 			case 1:
