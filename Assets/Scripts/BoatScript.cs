@@ -63,11 +63,12 @@ public class BoatScript : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.CompareTag("Boat")) Destroy(gameObject);
+		if (collision.CompareTag("Boat")) Obliterate(gameObject);
+		else if (collision.CompareTag("Wall")) Obliterate(gameObject);
 		else if (collision.CompareTag("Edge"))
 		{
 			Vector2 closest = collision.ClosestPoint(rb.position);
-			Vector2 normal = (rb.position - closest).normalized; 
+			Vector2 normal = (rb.position - closest).normalized;
 			Vector2 heading = transform.right;
 
 			if (normal != Vector2.zero && Vector2.Dot(heading, normal) < 0f)
@@ -77,5 +78,12 @@ public class BoatScript : MonoBehaviour
 				rb.rotation = newAngle;
 			}
 		}
+	}
+
+	public void Obliterate(bool success)
+	{
+		if (success) ReputationTracker.AddReputation();
+		else ReputationTracker.LoseReputation();
+		Destroy(gameObject);
 	}
 }

@@ -70,8 +70,8 @@ public class BoatSpawner : MonoBehaviour
 
 	// Spawning
 	[SerializeField] GameObject[] boatPrefabs;
-    float timeTilSpawn = 5;
-    float currentTime = 0;
+    float timeTilSpawn = 10;
+    float currentTime = 10;
 
 	private void Update()
 	{

@@ -17,7 +17,7 @@ public class DockScript : MonoBehaviour
 					if (bScript.GetShipType() == shipType)
 					{
 						PointTracker.GainPoints();
-						Destroy(boatParent.gameObject);
+						bScript.Obliterate(true);
 					}
 				}
 			}

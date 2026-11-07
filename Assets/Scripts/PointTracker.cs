@@ -21,5 +21,30 @@ public static class PointTracker
 		points += pointsGained;
         OnPointsGained?.Invoke(pointsGained, new Vector2Int(prevPoints, points));
     }
-    public static int GetPoints() { return points; }
+    public static int GetPoints() => points; 
+}
+
+public static class ReputationTracker
+{
+    static int reputation = 100;
+    static int reputationGain = 5;
+    static int reputationLoss = 20;
+    public static void ResetReputation() { reputation = 100; }
+    public static event Action<int, Vector2Int> OnReputationChanged;
+
+    public static void AddReputation()
+    {
+        int prevReputation = reputation;
+        reputation += reputationGain;
+        OnReputationChanged?.Invoke(reputationGain, new Vector2Int(prevReputation, reputation));
+    }
+
+    public static void LoseReputation()
+    {
+        int prevReputation = reputation;
+        reputation -= reputationLoss;
+        OnReputationChanged?.Invoke(-reputationLoss, new Vector2Int(prevReputation, reputation));
+
+    }
+    public static int GetReputation() => reputation;
 }
