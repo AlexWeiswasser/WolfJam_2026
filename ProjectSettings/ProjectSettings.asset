@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: 9c21c5ec12d95e74e9d9b9223be3b6b7
+  productGUID: e9f775c52429ebf4289d40422b96d716
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: WolfJam_2026
+  productName: WaterTrafficController
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -605,14 +605,14 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: WolfJam_2026
+  metroPackageName: WaterTrafficController
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: WolfJam_2026
+  metroApplicationDescription: WaterTrafficController
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -683,10 +683,10 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: e17565c3-d598-4bda-ba2f-753ac5aff029
+  cloudProjectId: 41d17c69-d96b-48c0-8dec-8ff9a3b5819a
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: WolfJam_2026
+  projectName: WaterTrafficController
   organizationId: leodiangelo
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
