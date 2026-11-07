@@ -65,9 +65,6 @@ public class PlayerHandler : MonoBehaviour
 	{
 		float radius = draggingCircle.GetScale().x / 2;
 
-		Debug.Log("Distance is " + Vector2.Distance(currentMousePos, draggingCircle.transform.position));
-		Debug.Log("Radius is " + radius);
-
 		if (Vector2.Distance(currentMousePos, draggingCircle.GetPosition()) < radius) 
 		return false;
 
