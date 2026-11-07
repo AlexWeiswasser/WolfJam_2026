@@ -1,8 +1,13 @@
+using System;
+
 public static class PointTracker
 {
     static int points;
     static float? pointMult = null;
     static int pointsPerBoat = 100;
+
+    // Passes the amount of points gained
+    public static event Action<int> OnPointsGained;
 
     public static void ResetPoints() { points = 0; }
     public static void ResetMult() { pointMult = null; }
@@ -10,7 +15,9 @@ public static class PointTracker
     {
         if (pointMult == null) pointMult = 0;
         else pointMult += .1f;
-		points += (int)(pointsPerBoat * pointMult); 
+        int pointsGained = (int)(pointsPerBoat * pointMult); 
+		points += pointsGained;
+        OnPointsGained?.Invoke(pointsGained);
     }
     public static int GetPoints() { return points; }
 }
