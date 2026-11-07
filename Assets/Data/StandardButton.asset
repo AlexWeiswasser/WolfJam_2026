@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5dd1d4faff066b449905ad221c62cc0, type: 3}
+  m_Name: StandardButton
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonStateActions
+  baseColor: {r: 0.75645244, g: 0.83380073, b: 0.8396226, a: 1}
+  altColor: {r: 0.9254902, g: 0.53333336, b: 0.53333336, a: 1}
+  defaultState:
+    changeSprite: 1
+    newSprite: {fileID: 1975200157784148822, guid: 87bbb60f9a0567d4fb79075fdd090aa1, type: 3}
+    useTextOffset: 1
+    yOffset: 2
+    changeSpriteColor: 0
+    spriteColor: {r: 0.5058824, g: 0.8588236, b: 0.89019614, a: 1}
+    colorChangeTime: 0.1
+    modifySpriteColor: 1
+    hue: 0
+    saturation: 0
+    value: 0
+    colorModTime: 0.1
+    changeTextColor: 1
+    textColor: {r: 1, g: 1, b: 1, a: 1}
+    textColorChangeTime: 0.05
+    changeScale: 0
+    newScale: {x: 1, y: 1}
+    scaleChangeTime: 0.1
+    scaleEase: 6
+    playAudio: 0
+    audioClip: {fileID: 0}
+  hoveredState:
+    changeSprite: 1
+    newSprite: {fileID: 1975200157784148822, guid: 87bbb60f9a0567d4fb79075fdd090aa1, type: 3}
+    useTextOffset: 1
+    yOffset: 2
+    changeSpriteColor: 0
+    spriteColor: {r: 0.617257, g: 0.8907811, b: 0.9150943, a: 1}
+    colorChangeTime: 0.05
+    modifySpriteColor: 1
+    hue: 0
+    saturation: 0
+    value: 0.4
+    colorModTime: 0.05
+    changeTextColor: 1
+    textColor: {r: 1, g: 1, b: 1, a: 1}
+    textColorChangeTime: 0.05
+    changeScale: 0
+    newScale: {x: 1.08, y: 1.08}
+    scaleChangeTime: 0.05
+    scaleEase: 7
+    playAudio: 1
+    audioClip: {fileID: 8300000, guid: 91084433e58bdee438322d653e0a40a5, type: 3}
+  pressedState:
+    changeSprite: 1
+    newSprite: {fileID: -638833078, guid: 87bbb60f9a0567d4fb79075fdd090aa1, type: 3}
+    useTextOffset: 1
+    yOffset: -2
+    changeSpriteColor: 0
+    spriteColor: {r: 0.48393556, g: 0.6892932, b: 0.7075472, a: 1}
+    colorChangeTime: 0.05
+    modifySpriteColor: 1
+    hue: 0
+    saturation: 0
+    value: -0.2
+    colorModTime: 0.05
+    changeTextColor: 1
+    textColor: {r: 1, g: 1, b: 1, a: 1}
+    textColorChangeTime: 0.05
+    changeScale: 0
+    newScale: {x: 0.95, y: 0.95}
+    scaleChangeTime: 0.05
+    scaleEase: 6
+    playAudio: 1
+    audioClip: {fileID: 8300000, guid: f5ed92cbbe56b5945b8b7b5502b5219a, type: 3}
+  disabledState:
+    changeSprite: 1
+    newSprite: {fileID: 1975200157784148822, guid: 87bbb60f9a0567d4fb79075fdd090aa1, type: 3}
+    useTextOffset: 1
+    yOffset: 2
+    changeSpriteColor: 0
+    spriteColor: {r: 0.37046102, g: 0.4203043, b: 0.4245283, a: 1}
+    colorChangeTime: 0.1
+    modifySpriteColor: 1
+    hue: 0
+    saturation: -0.4
+    value: -0.2
+    colorModTime: 0.05
+    changeTextColor: 1
+    textColor: {r: 0.7, g: 0.7, b: 0.7, a: 1}
+    textColorChangeTime: 0.2
+    changeScale: 0
+    newScale: {x: 1, y: 1}
+    scaleChangeTime: 0.1
+    scaleEase: 4
+    playAudio: 0
+    audioClip: {fileID: 0}
