@@ -684,7 +684,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -1382,6 +1382,7 @@ MonoBehaviour:
   transitionMusic: {fileID: 8300000, guid: f902f023067467c489575072f8fb587e, type: 3}
   gameLoopMusic: {fileID: 8300000, guid: 783752e10c0be50499108758a7dee153, type: 3}
   sfxPoolSize: 30
+  pitchVariance: 0.15
 --- !u!4 &766976366
 Transform:
   m_ObjectHideFlags: 0
