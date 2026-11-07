@@ -12,6 +12,7 @@ public class BoatScript : MonoBehaviour
 
 	[Header ("Stats")]
 	[SerializeField] float speed;
+	[SerializeField] float boostForce;
 	ShipType shipType;
 	public ShipType GetShipType() => shipType;
 
@@ -59,6 +60,11 @@ public class BoatScript : MonoBehaviour
 	public void RotateBoat(float angle)
 	{
 		rb.MoveRotation(angle);
+	}
+
+	public void BoostBoat()
+	{
+		rb.AddForce(transform.right * boostForce, ForceMode2D.Impulse);
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
