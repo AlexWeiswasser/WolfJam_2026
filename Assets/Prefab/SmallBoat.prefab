@@ -9891,6 +9891,25 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ada3d3b231d8fde48b0094fd059c4f06, type: 3}
   - {fileID: 21300000, guid: b8ab2199ed71d4f44bf342ebef03578b, type: 3}
   - {fileID: 21300000, guid: 3073b6b4a4ea7fc45b41a8f86d6e9e7e, type: 3}
+  cowboySounds:
+  - {fileID: 8300000, guid: 895afc90d3ba1124b9f0350c54c39f39, type: 3}
+  - {fileID: 8300000, guid: 0d5cd7b6dd232674680fac63923f6be7, type: 3}
+  - {fileID: 8300000, guid: e744e1b1cacfb3241af305c06f25c3fb, type: 3}
+  robotSounds:
+  - {fileID: 8300000, guid: 11a4ed8b48a99d447a860e6868a2d080, type: 3}
+  - {fileID: 8300000, guid: b398732156e414445880b73989d9ae3c, type: 3}
+  - {fileID: 8300000, guid: 7686ed4ce7312734da37894b90dbdb2c, type: 3}
+  vikingSounds:
+  - {fileID: 8300000, guid: 0b4a150d1355ba7499116f3b5293817e, type: 3}
+  - {fileID: 8300000, guid: 0f7d739d1c383364a8c4cea78b28204d, type: 3}
+  - {fileID: 8300000, guid: 74e3283fa4cf53d4f96cb80b32327ef1, type: 3}
+  skeletonSounds:
+  - {fileID: 8300000, guid: fe333ee5992f8c34ebc8dbcc04504ce7, type: 3}
+  - {fileID: 8300000, guid: 98bc3037d5682834b9a3b2ee9131f16f, type: 3}
+  - {fileID: 8300000, guid: 870a428600af40944a29b5dff6c478ee, type: 3}
+  - {fileID: 8300000, guid: 7fc70702b62e9664582f6c1460925469, type: 3}
+  boatCrash: {fileID: 8300000, guid: 127cf6137d961b54fbf56fd8c15123dc, type: 3}
+  scorePoint: {fileID: 8300000, guid: 843fc4f231921ce42812a467453421bf, type: 3}
 --- !u!50 &8105663656230541301
 Rigidbody2D:
   serializedVersion: 5
