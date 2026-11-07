@@ -1,12 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEngine.GraphicsBuffer;
 
 public class PlayerHandler : MonoBehaviour
 {
 	[Header ("Object References")]
-	[SerializeField] GameObject dottedCircle;
-	[SerializeField] GameObject lightSlice;
+	[SerializeField] Transform dottedCircle;
 	[SerializeField] Transform lightHouse;
 
 	// Tracking 
@@ -25,8 +23,7 @@ public class PlayerHandler : MonoBehaviour
 		dottedCircle.transform.position = currentMousePos;
 
 		Vector3 dir = (currentMousePos - lightHouse.position).normalized;
-		lightSlice.transform.position = lightHouse.transform.position + (dir * 5);
 		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-		lightSlice.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+		lightHouse.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 	}
 }
