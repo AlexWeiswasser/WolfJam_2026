@@ -26,14 +26,7 @@ public class PauseCanvas : MonoBehaviour
         pauseOverlay.SetActive(false);
         Time.timeScale = 1;
     }
-
-	void TogglePauseMenuButtons(bool on)
-    {
-		quitButton.SetActive(on);
-		resumeButton.SetActive(on);
-        pauseButton.SetActive(on);
-	}
-
+    
     public void Quit()
     {
         SceneLoader.Instance.LoadScene(SceneLoader.mainMenuName);
