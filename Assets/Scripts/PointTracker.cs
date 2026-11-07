@@ -26,6 +26,8 @@ public static class PointTracker
 
 public static class ReputationTracker
 {
+    public static readonly int MaxReputation = 100;
+    public static readonly int MinReputation = 0;
     static int reputation = 100;
     static int reputationGain = 5;
     static int reputationLoss = 20;
@@ -36,6 +38,7 @@ public static class ReputationTracker
     {
         int prevReputation = reputation;
         reputation += reputationGain;
+        reputation = Mathf.Min(reputation, MaxReputation);
         OnReputationChanged?.Invoke(reputationGain, new Vector2Int(prevReputation, reputation));
     }
 
@@ -43,8 +46,8 @@ public static class ReputationTracker
     {
         int prevReputation = reputation;
         reputation -= reputationLoss;
+        reputation = Mathf.Max(reputation, MinReputation);
         OnReputationChanged?.Invoke(-reputationLoss, new Vector2Int(prevReputation, reputation));
-
     }
     public static int GetReputation() => reputation;
 }

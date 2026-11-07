@@ -77,8 +77,8 @@ public class BoatScript : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.CompareTag("Boat")) Obliterate(gameObject);
-		else if (collision.CompareTag("Wall")) Obliterate(gameObject);
+		if (collision.CompareTag("Boat")) Obliterate(false);
+		else if (collision.CompareTag("Wall")) Obliterate(false);
 		else if (collision.CompareTag("Edge"))
 		{
 			Vector2 closest = collision.ClosestPoint(rb.position);

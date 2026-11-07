@@ -27,9 +27,10 @@ public class PlayerHandler : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		if (!circleTracks) return;
+
 		// Dotted circles
-		if(circleTracks)
-			draggingCircle.SetPosition(currentMousePos);
+		draggingCircle.SetPosition(currentMousePos);
 
 		// Light rotation
 		Vector3 dir = (currentMousePos - lampRoom.position).normalized;
@@ -45,6 +46,7 @@ public class PlayerHandler : MonoBehaviour
 
 	public void MousePress(InputAction.CallbackContext context)
 	{
+		if (GameOverCanvas.GameOver) return;
 		if (context.performed)
 		{
 			if (PauseCanvas.Paused) return;
