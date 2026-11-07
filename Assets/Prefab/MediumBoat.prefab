@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoatScript
   speed: 1
-  boostForce: 1
+  boostForce: 5
   rb: {fileID: 1549073275999073230}
   rend: {fileID: 6446848341066206142}
   col: {fileID: 9064407763488145250}

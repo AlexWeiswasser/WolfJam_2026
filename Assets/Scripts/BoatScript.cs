@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BoatScript : MonoBehaviour
@@ -66,7 +67,7 @@ public class BoatScript : MonoBehaviour
 	}
 
 	public void RotateBoat(float angle) { rb.MoveRotation(angle); }
-	public void BoostBoat() { currentBoostVelocity += (Vector2)transform.right * boostForce; }
+	public IEnumerator BoostBoat() { yield return new WaitForFixedUpdate(); currentBoostVelocity += (Vector2)transform.right * boostForce; }
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{

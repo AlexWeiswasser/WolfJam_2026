@@ -77,7 +77,7 @@ public class PlayerHandler : MonoBehaviour
 			if (bScript)
 			{
 				bScript.RotateBoat(angle);
-				bScript.BoostBoat();
+				bScript.StartCoroutine(bScript.BoostBoat());
 			}
 		}
 	}
