@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_Sprite: {fileID: 21300000, guid: 539298d9a4e0f2ba89d9214e57be7a83, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f21a20e4033ddf7489ee3b91bafc9527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoatScript
-  speed: 5
+  speed: 1
   rb: {fileID: 1549073275999073230}
   rend: {fileID: 6446848341066206142}
 --- !u!50 &1549073275999073230
