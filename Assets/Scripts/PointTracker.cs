@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public static class PointTracker
 {
@@ -6,8 +7,8 @@ public static class PointTracker
     static float? pointMult = null;
     static int pointsPerBoat = 100;
 
-    // Passes the amount of points gained
-    public static event Action<int> OnPointsGained;
+    // Passes the amount of points gained and what the point value should start and end at. (eg. gained 100 points, go from 200 to 300)
+    public static event Action<int, Vector2Int> OnPointsGained;
 
     public static void ResetPoints() { points = 0; }
     public static void ResetMult() { pointMult = null; }
@@ -15,9 +16,10 @@ public static class PointTracker
     {
         if (pointMult == null) pointMult = 0;
         else pointMult += .1f;
-        int pointsGained = (int)(pointsPerBoat * pointMult); 
+        int pointsGained = (int)(pointsPerBoat * (pointMult + 1)); 
+        int prevPoints = points;
 		points += pointsGained;
-        OnPointsGained?.Invoke(pointsGained);
+        OnPointsGained?.Invoke(pointsGained, new Vector2Int(prevPoints, points));
     }
     public static int GetPoints() { return points; }
 }
