@@ -14,9 +14,9 @@ public static class PointTracker
     public static void ResetMult() { pointMult = null; }
     public static void GainPoints() 
     {
-        if (pointMult == null) pointMult = 0;
+        if (pointMult == null) pointMult = 0.1f;
         else pointMult += .1f;
-        int pointsGained = (int)(pointsPerBoat * (pointMult + 1)); 
+        int pointsGained = (int)(pointsPerBoat * pointMult); 
         int prevPoints = points;
 		points += pointsGained;
         OnPointsGained?.Invoke(pointsGained, new Vector2Int(prevPoints, points));
