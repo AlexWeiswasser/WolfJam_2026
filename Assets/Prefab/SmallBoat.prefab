@@ -9911,6 +9911,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7fc70702b62e9664582f6c1460925469, type: 3}
   boatCrash: {fileID: 8300000, guid: 127cf6137d961b54fbf56fd8c15123dc, type: 3}
   scorePoint: {fileID: 8300000, guid: 843fc4f231921ce42812a467453421bf, type: 3}
+  sfxCooldown: 2
 --- !u!50 &8105663656230541301
 Rigidbody2D:
   serializedVersion: 5
