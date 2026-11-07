@@ -100,19 +100,19 @@ public class BoatScript : MonoBehaviour
 		switch ((int)GetShipType())
 		{
 			case 0:
-				int sound = Random.Range(1, cowboySounds.Length);
+				int sound = Random.Range(0, cowboySounds.Length);
 				MusicManager.Instance.PlaySfx(cowboySounds[sound]);
                 break;
 			case 1:
-                int sound1 = Random.Range(1, robotSounds.Length);
+                int sound1 = Random.Range(0, robotSounds.Length);
                 MusicManager.Instance.PlaySfx(robotSounds[sound1]);
                 break;
 			case 2:
-                int sound2 = Random.Range(1, vikingSounds.Length);
+                int sound2 = Random.Range(0, vikingSounds.Length);
                 MusicManager.Instance.PlaySfx(vikingSounds[sound2]);
                 break;
 			case 3:
-                int sound3 = Random.Range(1, skeletonSounds.Length);
+                int sound3 = Random.Range(0, skeletonSounds.Length);
                 MusicManager.Instance.PlaySfx(skeletonSounds[sound3]);
                 break;
 			default:
