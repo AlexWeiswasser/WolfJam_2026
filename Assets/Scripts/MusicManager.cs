@@ -14,7 +14,7 @@ public class MusicManager : MonoBehaviour
     private int nextSfxIndex;
 
 
-    private int musicState = 0;
+    private int musicState = 1;
     /* 0 = intro music
      * 1 = transition music
      * 2 = main loop
@@ -32,6 +32,9 @@ public class MusicManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        musicSource = gameObject.AddComponent<AudioSource>();
+        musicSource.playOnAwake = false;
 
         sfxPool = new AudioSource[sfxPoolSize];
         for (int i = 0; i < sfxPoolSize; i++)
