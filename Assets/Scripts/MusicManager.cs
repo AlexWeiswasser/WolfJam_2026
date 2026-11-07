@@ -1,4 +1,3 @@
-using DG.Tweening.Core.Easing;
 using System.Collections;
 using UnityEngine;
 
@@ -7,12 +6,15 @@ public class MusicManager : MonoBehaviour
     [SerializeField] AudioClip introMusic;
     [SerializeField] AudioClip transitionMusic;
     [SerializeField] AudioClip gameLoopMusic;
-    private AudioSource musicSource;
+
+    private AudioSource[] musicSources = new AudioSource[2];
+    private int activeSource;
+    private double nextStartTime;
+    private const double ScheduleLead = 0.5;
 
     private AudioSource[] sfxPool;
     [SerializeField] private int sfxPoolSize = 30;
     private int nextSfxIndex;
-
 
     private int musicState = 1;
     /* 0 = intro music
@@ -33,8 +35,11 @@ public class MusicManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        musicSource = gameObject.AddComponent<AudioSource>();
-        musicSource.playOnAwake = false;
+        for (int i = 0; i < musicSources.Length; i++)
+        {
+            musicSources[i] = gameObject.AddComponent<AudioSource>();
+            musicSources[i].playOnAwake = false;
+        }
 
         sfxPool = new AudioSource[sfxPoolSize];
         for (int i = 0; i < sfxPoolSize; i++)
@@ -47,47 +52,51 @@ public class MusicManager : MonoBehaviour
 
     public void Start()
     {
-        PlayMusic();
+        nextStartTime = AudioSettings.dspTime + 0.1;
+        StartCoroutine(MusicRoutine());
     }
 
-    public void PlayMusic()
+    private IEnumerator MusicRoutine()
     {
-        switch (musicState)
+        while (true)
         {
-            case 0:
-                musicSource.clip = introMusic;
-                musicSource.Play();
-                StartCoroutine(PlayNext(introMusic.length));
-                break;
-            case 1:
-                musicSource.clip = transitionMusic;
-                musicSource.Play();
-                SetState(2);
-                StartCoroutine(PlayNext(transitionMusic.length));
-                break;
-            case 2:
-                musicSource.clip = gameLoopMusic;
-                musicSource.Play();
-                StartCoroutine(PlayNext(gameLoopMusic.length));
-                break;
-            default:
-                break;
+            AudioClip clip = null;
+            switch (musicState)
+            {
+                case 0:
+                    clip = introMusic;
+                    break;
+                case 1:
+                    clip = transitionMusic;
+                    SetState(2);
+                    break;
+                case 2:
+                    clip = gameLoopMusic;
+                    break;
+                default:
+                    break;
+            }
+
+            if (clip == null)
+                yield break;
+
+            AudioSource src = musicSources[activeSource];
+            src.clip = clip;
+            src.PlayScheduled(nextStartTime);
+
+            nextStartTime += (double)clip.samples / clip.frequency;
+            activeSource = 1 - activeSource;
+
+            while (AudioSettings.dspTime < nextStartTime - ScheduleLead)
+                yield return null;
         }
-
     }
 
-    IEnumerator PlayNext(float time)
-    {
-        yield return new WaitForSeconds(time);
-        PlayMusic();
-    }
-
-    //called once when the game starts, called again when the transition is played.
+    //called once when the gameplay starts, called again when the transition is played.
     public void SetState(int newState)
     {
         musicState = newState;
     }
-
 
     public void PlaySfx(AudioClip clip)
     {
