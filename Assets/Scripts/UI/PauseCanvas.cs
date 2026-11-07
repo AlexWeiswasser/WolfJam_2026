@@ -12,6 +12,11 @@ public class PauseCanvas : MonoBehaviour
 
     bool allowedToPause = false;
     public static bool Paused = false;
+
+    void Awake()
+    {
+        Paused = false;
+    }
     
     public void Pause()
     {

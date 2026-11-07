@@ -70,8 +70,13 @@ public class BoatSpawner : MonoBehaviour
 
 	// Spawning
 	[SerializeField] GameObject[] boatPrefabs;
+	[SerializeField] GameObject iceBergPrefab;
+	[SerializeField] LayerMask boatLayer;
     float timeTilSpawn = 10;
     float currentTime = 10;
+	float distanceBetweenSpawnsRadius = 10;
+	int amountTilBergSpawn = 6;
+	int currentTimesSpawned = 0;
 
 	private void Update()
 	{
@@ -85,10 +90,28 @@ public class BoatSpawner : MonoBehaviour
 
     private void SpawnBoat()
     {
-        int boatType = Random.Range(0, boatPrefabs.Length);
-        int spawn = Random.Range(0, spawns.Count);
-        Vector2 spawnPos = spawns[spawn].GetSpawnPos();
-        Quaternion spawnRot = Quaternion.Euler(spawns[spawn].GetSpawnRot());
-        Instantiate(boatPrefabs[boatType], spawnPos, spawnRot);
-    }
+		Collider2D boat;
+		Vector2 spawnPos;
+		int spawn;
+		do
+		{
+			spawn = Random.Range(0, spawns.Count);
+			spawnPos = spawns[spawn].GetSpawnPos();
+			boat = Physics2D.OverlapCircle(spawnPos, distanceBetweenSpawnsRadius, boatLayer);
+		}
+		while (boat != null);
+		Quaternion spawnRot = Quaternion.Euler(spawns[spawn].GetSpawnRot());
+
+		if (currentTimesSpawned >= amountTilBergSpawn)
+		{
+			Instantiate(iceBergPrefab, spawnPos, spawnRot);
+			currentTimesSpawned = 0;
+		}
+		else
+		{
+			int boatType = Random.Range(0, boatPrefabs.Length);
+			Instantiate(boatPrefabs[boatType], spawnPos, spawnRot);
+			currentTimesSpawned++;
+		}
+	}
 }

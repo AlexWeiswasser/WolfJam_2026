@@ -20,7 +20,6 @@ public class BoatScript : MonoBehaviour
 	[Header ("References")]
 	[SerializeField] Rigidbody2D rb;
 	[SerializeField] SpriteRenderer rend;
-	[SerializeField] Collider2D col;
 	[Tooltip ("Cowboy, Robot, Viking, Skeleton")]
 	[SerializeField] Sprite[] shipSprites;
 
@@ -79,6 +78,7 @@ public class BoatScript : MonoBehaviour
 	{
 		if (collision.CompareTag("Boat")) Obliterate(false);
 		else if (collision.CompareTag("Wall")) Obliterate(false);
+		else if (collision.CompareTag("Iceberg")) Obliterate(false);
 		else if (collision.CompareTag("Edge"))
 		{
 			Vector2 closest = collision.ClosestPoint(rb.position);

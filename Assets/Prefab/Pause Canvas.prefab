@@ -105,7 +105,7 @@ RectTransform:
   m_GameObject: {fileID: 2668985518901345578}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3238366639163784605}
@@ -113,7 +113,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -1280, y: -720}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &192651200241515948
 CanvasRenderer:
@@ -300,11 +300,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1033394298536695138, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_fontSize
-      value: 75.75
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 1033394298536695138, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_fontSizeBase
-      value: 75.75
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 2272564722880905674, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_SizeDelta.x
@@ -320,11 +320,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3686204380215675385, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_fontSize
-      value: 75.75
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 3686204380215675385, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_fontSizeBase
-      value: 75.75
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 5258625971332506589, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_SizeDelta.x
@@ -400,11 +400,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8035334716758513261, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 382
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8035334716758513261, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 70
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8035334716758513261, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -440,7 +440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8035334716758513261, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -80
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 8035334716758513261, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -456,11 +456,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8196258744870445982, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 600
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8196258744870445982, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 120
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -503,11 +503,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1033394298536695138, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_fontSize
-      value: 75.75
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 1033394298536695138, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_fontSizeBase
-      value: 75.75
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 2272564722880905674, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_SizeDelta.x
@@ -523,11 +523,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3686204380215675385, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_fontSize
-      value: 75.75
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 3686204380215675385, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_fontSizeBase
-      value: 75.75
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 5258625971332506589, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_SizeDelta.x
@@ -603,11 +603,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8035334716758513261, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 600
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8035334716758513261, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 120
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8035334716758513261, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -643,7 +643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8035334716758513261, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 80
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8035334716758513261, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -659,11 +659,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8196258744870445982, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 600
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8196258744870445982, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 120
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
