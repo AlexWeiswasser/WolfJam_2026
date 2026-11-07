@@ -1138,9 +1138,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 610230b66430d7942a3e573acc38bda7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicManager
-  introMusic: {fileID: 0}
-  transitionMusic: {fileID: 0}
-  gameLoopMusic: {fileID: 0}
+  introMusic: {fileID: 8300000, guid: 6c669cbe9c7b43e4cbc6b4666de0628b, type: 3}
+  transitionMusic: {fileID: 8300000, guid: f902f023067467c489575072f8fb587e, type: 3}
+  gameLoopMusic: {fileID: 8300000, guid: 783752e10c0be50499108758a7dee153, type: 3}
   sfxPoolSize: 30
 --- !u!4 &766976366
 Transform:
