@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "CaptainInput",
+    "maps": [
+        {
+            "name": "Captain",
+            "id": "4bc51cf7-acfd-48b3-bab1-60186cdfdf04",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "da82c025-24bd-44f9-8589-40248b543790",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2b4416e9-e9b2-449b-b1d4-9f764b2a6605",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

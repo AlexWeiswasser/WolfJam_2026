@@ -7,6 +7,11 @@ public class BoatScript : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		transform.position += transform.up * speed * Time.fixedDeltaTime;
+		transform.position += transform.right * speed * Time.fixedDeltaTime;
+	}
+
+	public void RotateBoat(float angle)
+	{
+		transform.rotation = Quaternion.Euler(0f, 0f, angle);
 	}
 }

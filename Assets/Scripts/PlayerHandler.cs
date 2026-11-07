@@ -3,13 +3,19 @@ using UnityEngine.InputSystem;
 
 public class PlayerHandler : MonoBehaviour
 {
-	[Header ("Object References")]
-	[SerializeField] Transform dottedCircle;
+	[Header("Object References")]
+	[SerializeField] CircleCollider2D dottedCircle;
 	[SerializeField] Transform lampRoom;
 
-	// Tracking 
+	[Header ("Tracking")]
 	Vector3 currentMousePos;
 	[SerializeField] float lightBeamSpeed;
+	[SerializeField] LayerMask boatLayer;
+
+	// Boat manipulation
+	Collider2D[] currentBoats;
+	Vector2 mouseStart;
+	Vector2 mouseEnd;
 
 	private void Update()
 	{
@@ -31,6 +37,39 @@ public class PlayerHandler : MonoBehaviour
 			targetRotation,
 			lightBeamSpeed * Time.fixedDeltaTime
 		);
+	}
 
+	public void MousePress(InputAction.CallbackContext context)
+	{
+		if (context.performed)
+		{
+			mouseStart = currentMousePos;
+			ObtainShips();
+		}
+		else if (context.canceled)
+		{
+			mouseEnd = currentMousePos;
+			DirectShips();
+		}
+	}
+
+	private void ObtainShips()
+	{
+		float radius = dottedCircle.radius;
+		currentBoats = Physics2D.OverlapCircleAll(dottedCircle.transform.position, radius, boatLayer);
+	}
+
+	private void DirectShips()
+	{
+		Vector2 dir = (mouseEnd - mouseStart).normalized;
+		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+		foreach (Collider2D boat in currentBoats)
+		{
+			if(boat.TryGetComponent<BoatScript>(out var bScript))
+			{
+				bScript.RotateBoat(angle);
+			}
+		}
 	}
 }
