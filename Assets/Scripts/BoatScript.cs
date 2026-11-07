@@ -24,8 +24,22 @@ public class BoatScript : MonoBehaviour
 	[Tooltip ("Cowboy, Robot, Viking, Skeleton")]
 	[SerializeField] Sprite[] shipSprites;
 
-	// Movement
-	Vector2 currentVelocity = Vector2.zero;
+	[Header("Sounds")]
+	[SerializeField] AudioClip[] cowboySounds;
+	[SerializeField] AudioClip[] robotSounds;
+	[SerializeField] AudioClip[] vikingSounds;
+	[SerializeField] AudioClip[] skeletonSounds;
+	[SerializeField] AudioClip boatCrash;
+    [SerializeField] AudioClip scorePoint;
+
+
+
+
+
+
+
+    // Movement
+    Vector2 currentVelocity = Vector2.zero;
 	Vector2 currentBoostVelocity = Vector2.zero;
 	float boostDamping = .9f;
 
@@ -83,7 +97,27 @@ public class BoatScript : MonoBehaviour
 	{
 		yield return new WaitForFixedUpdate(); 
 		currentBoostVelocity += (Vector2)transform.right * boostForce;
-
+		switch ((int)GetShipType())
+		{
+			case 0:
+				int sound = Random.Range(1, cowboySounds.Length);
+				MusicManager.Instance.PlaySfx(cowboySounds[sound]);
+                break;
+			case 1:
+                int sound1 = Random.Range(1, robotSounds.Length);
+                MusicManager.Instance.PlaySfx(robotSounds[sound1]);
+                break;
+			case 2:
+                int sound2 = Random.Range(1, vikingSounds.Length);
+                MusicManager.Instance.PlaySfx(vikingSounds[sound2]);
+                break;
+			case 3:
+                int sound3 = Random.Range(1, skeletonSounds.Length);
+                MusicManager.Instance.PlaySfx(skeletonSounds[sound3]);
+                break;
+			default:
+				break;
+		}
 		burstParticles.Clear();
 		burstParticles.Play();
 	}
@@ -112,6 +146,10 @@ public class BoatScript : MonoBehaviour
 	{
 		if (success) ReputationTracker.AddReputation();
 		else ReputationTracker.LoseReputation();
+		if (!success)
+			MusicManager.Instance.PlaySfx(boatCrash);
+		else if (success)
+			MusicManager.Instance.PlaySfx(scorePoint);
 		Destroy(gameObject);
 	}
 }

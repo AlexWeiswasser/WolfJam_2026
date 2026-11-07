@@ -15,6 +15,7 @@ public class MusicManager : MonoBehaviour
     private AudioSource[] sfxPool;
     [SerializeField] private int sfxPoolSize = 30;
     private int nextSfxIndex;
+    [SerializeField] float pitchVariance = 0.15f;
 
     private int musicState = 0;
     /* 0 = intro music
@@ -102,7 +103,8 @@ public class MusicManager : MonoBehaviour
     {
         AudioSource src = sfxPool[nextSfxIndex];
         nextSfxIndex = (nextSfxIndex + 1) % sfxPool.Length;
-
+        float randomPitch = Random.Range(1f - pitchVariance, 1f + pitchVariance);
+        src.pitch = randomPitch;
         src.PlayOneShot(clip);
     }
 }
