@@ -140,6 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoatScript
   speed: 5
   rb: {fileID: 1549073275999073230}
+  rend: {fileID: 6446848341066206142}
 --- !u!50 &1549073275999073230
 Rigidbody2D:
   serializedVersion: 5
