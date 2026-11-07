@@ -20,6 +20,7 @@ public class BoatScript : MonoBehaviour
 	[Header ("References")]
 	[SerializeField] Rigidbody2D rb;
 	[SerializeField] SpriteRenderer rend;
+	[SerializeField] ParticleSystem burstParticles; 
 	[Tooltip ("Cowboy, Robot, Viking, Skeleton")]
 	[SerializeField] Sprite[] shipSprites;
 
@@ -33,29 +34,35 @@ public class BoatScript : MonoBehaviour
 		int type = Random.Range(0, 4);
 		shipType = (ShipType)type;
 
+		var main = burstParticles.main;
+
 		switch (type)
 		{
 			case 0:
 				{
 					rend.sprite = shipSprites[0];
+					main.startColor = Color.yellow;
 					rend.color = Color.green;
 				}
 				break;
 			case 1:
 				{
 					rend.sprite = shipSprites[1];
+					main.startColor = Color.red;
 					rend.color = Color.red;
 				}
 				break;
 			case 2:
 				{
 					rend.sprite = shipSprites[2];
-					rend.color = Color.yellow;
+					main.startColor = Color.green;
+					rend.color = Color.green;
 				}
 				break;
 			case 3:
 				{
 					rend.sprite = shipSprites[3];
+					main.startColor = Color.purple;
 					rend.color = Color.purple;
 				}
 				break;
@@ -72,7 +79,14 @@ public class BoatScript : MonoBehaviour
 	}
 
 	public void RotateBoat(float angle) { rb.MoveRotation(angle); }
-	public IEnumerator BoostBoat() { yield return new WaitForFixedUpdate(); currentBoostVelocity += (Vector2)transform.right * boostForce; }
+	public IEnumerator BoostBoat() 
+	{
+		yield return new WaitForFixedUpdate(); 
+		currentBoostVelocity += (Vector2)transform.right * boostForce;
+
+		burstParticles.Clear();
+		burstParticles.Play();
+	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
