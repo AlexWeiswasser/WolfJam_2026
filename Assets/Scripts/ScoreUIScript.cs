@@ -8,6 +8,10 @@ public class ScoreUIScript : MonoBehaviour
     int internalPointCount = 0;
     int currentTargetPoints = 0;
     [SerializeField] float timeBetweenPoints = 0.05f;
+    [SerializeField] int pointDifToGoDoubleSpeed = 50;
+    [SerializeField] int pointDifToGoTripleSpeed = 100;
+    bool doubleSpeed = false;
+    bool tripleSpeed = false;
     float accumulator = 0;
 
     void OnEnable()
@@ -28,13 +32,15 @@ public class ScoreUIScript : MonoBehaviour
 
     void Update()
     {
-        if (accumulator < timeBetweenPoints)
+        float timeBetween = doubleSpeed ? timeBetweenPoints * 0.5f : timeBetweenPoints;
+        timeBetween = tripleSpeed ? timeBetweenPoints * 0.333f : timeBetween;
+        if (accumulator < timeBetween)
         {
             accumulator += Time.deltaTime;
             return;   
         }
-        int pointsGainedThisFrame = (int)(accumulator / timeBetweenPoints);
-        accumulator -= timeBetweenPoints * pointsGainedThisFrame;
+        int pointsGainedThisFrame = (int)(accumulator / timeBetween);
+        accumulator -= timeBetween * pointsGainedThisFrame;
 
         if (internalPointCount < currentTargetPoints)
         {
@@ -44,12 +50,21 @@ public class ScoreUIScript : MonoBehaviour
         else if (internalPointCount > currentTargetPoints)
         {
             internalPointCount = currentTargetPoints;
+            doubleSpeed = false;
+            tripleSpeed = false;
+        }
+        else
+        {
+            doubleSpeed = false;
+            tripleSpeed = false;
         }
     }
 
     void UpdatePoints(int pointsGained, Vector2Int range)
     {
         currentTargetPoints = range.y;
+        if (currentTargetPoints - pointDifToGoDoubleSpeed > internalPointCount) doubleSpeed = true;
+        if (currentTargetPoints - pointDifToGoTripleSpeed > internalPointCount) tripleSpeed = true;
     }
 
     void UpdateText()
