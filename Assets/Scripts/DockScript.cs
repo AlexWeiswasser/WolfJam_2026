@@ -8,12 +8,17 @@ public class DockScript : MonoBehaviour
 	{
 		if(collision.CompareTag("Boat"))
 		{
-			if(collision.TryGetComponent<BoatScript>(out var bScript))
+			Transform boatParent = collision.transform.parent;
+
+			if (boatParent)
 			{
-				if (bScript.GetShipType() == shipType)
+				if (boatParent.TryGetComponent<BoatScript>(out var bScript))
 				{
-					PointTracker.GainPoints();
-					Destroy(collision.gameObject);
+					if (bScript.GetShipType() == shipType)
+					{
+						PointTracker.GainPoints();
+						Destroy(boatParent.gameObject);
+					}
 				}
 			}
 		}
