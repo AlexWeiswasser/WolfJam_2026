@@ -94,9 +94,10 @@ public class PlayerScript : MonoBehaviour
             return;
 		}
 
-        transform.position = pos;
+        canMove = false;
+        rb.linearVelocityX = 0;
+		transform.position = pos;
 		currentLight = iLight;
-		canMove = false;
 	}
 
 	// Ladder things
