@@ -47,6 +47,7 @@ public class PlayerHandler : MonoBehaviour
 	{
 		if (context.performed)
 		{
+			if (PauseCanvas.Paused) return;
 			circleTracks = false;
 			mouseStart = currentMousePos;
 			draggingCircle.ToggleArrow(true);
