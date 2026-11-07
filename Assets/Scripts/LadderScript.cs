@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-public class LadderScript : MonoBehaviour, IInteractable
+public class LadderScript : MonoBehaviour
 {
 	[SerializeField] PlayerScript player;
 	[SerializeField] Transform trapDoor;

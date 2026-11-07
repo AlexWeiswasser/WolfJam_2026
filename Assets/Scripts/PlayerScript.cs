@@ -11,11 +11,13 @@ public class PlayerScript : MonoBehaviour
 
 	[Header("Movement Stats")]
     [SerializeField] float moveSpeed = 5f;
-    Vector2 movementDir;
+    bool canMove = true; 
+    Vector2 inputVector;
 
     [Header ("Interaction Data")]
-    [SerializeField] float interactionRadius = 1f;
+    [SerializeField] float interactionRadius = .75f;
     [SerializeField] LayerMask interactableLayer;
+    [SerializeField] LayerMask ladderLayer; 
     float interactionCooldown = .1f;
     float interactCDTracker = 0;
     bool canInteract = true; 
@@ -24,19 +26,33 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] CameraScript camScript;
 
+    // Light data
+    ILight currentLight = null;
+
     // Lifetime functions
     public void ReceiveInput(InputAction.CallbackContext context)
     {
-		movementDir = context.ReadValue<Vector2>().normalized;
+		inputVector = context.ReadValue<Vector2>();
 
-		// Y based input
-		if (movementDir.y > 0) { AttemptInteract(up: true); }
-        else if (movementDir.y < 0) { AttemptInteract(up: false); }
+        // Ladder movement
+        if (!canMove) return;
+		if (inputVector.y > 0) { AttemptLadder(up: true); }
+        else if (inputVector.y < 0) { AttemptLadder(up: false); }
+    }
+
+    public void AttemptInteraction(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+            AttemptInteract();
     }
 
 	private void FixedUpdate()
 	{
-		rb.linearVelocityX = movementDir.x * moveSpeed;
+        if (currentLight != null) currentLight.GiveInput(inputVector);
+		if (!canMove) return;
+
+        if(Mathf.Abs(inputVector.x) > .1f)
+		    rb.linearVelocityX = Mathf.Sign(inputVector.x) * moveSpeed;
 	}
 
     private void Update()
@@ -53,20 +69,52 @@ public class PlayerScript : MonoBehaviour
     }
 
     // Interaction functions
-	private void AttemptInteract(bool up)
+	private void AttemptInteract()
     {
-        Collider2D nearbyInteractible = Physics2D.OverlapCircle(transform.position, interactionRadius, interactableLayer);
+		if (!canInteract) return;
+
+		Collider2D nearbyInteractible = Physics2D.OverlapCircle(transform.position, interactionRadius, interactableLayer);
         if (nearbyInteractible)
         {
-            IInteractable inter = nearbyInteractible.GetComponentInParent<IInteractable>();
+            ILight inter = nearbyInteractible.GetComponentInParent<ILight>();
             if (inter != null)
             {
-                inter.Interact(up);
+                inter.Interact(this);
                 canInteract = false; 
             }
         }
     }
+    public void LockInLight(ILight iLight, Vector2 pos)
+    {
+        // If already locked
+        if(!canMove) 
+        {
+			canMove = true;
+			currentLight = null;
+            return;
+		}
 
+        transform.position = pos;
+		currentLight = iLight;
+		canMove = false;
+	}
+
+	// Ladder things
+	private void AttemptLadder(bool up)
+    {
+		if (!canInteract) return;
+
+		Collider2D nearbyLadder = Physics2D.OverlapCircle(transform.position, interactionRadius, ladderLayer);
+		if (nearbyLadder)
+		{
+			LadderScript inter = nearbyLadder.GetComponentInParent<LadderScript>();
+			if (inter != null)
+			{
+				inter.Interact(up);
+				canInteract = false;
+			}
+		}
+	}
     public void ChangeFloor(bool up, Vector2 pos, bool canDownFromMiddle, bool canUpFromMiddle)
     {
         if (!canInteract) return;
@@ -82,7 +130,8 @@ public class PlayerScript : MonoBehaviour
 	}
 }
 
-public interface IInteractable
+public interface ILight
 {
-	public void Interact(bool up);
+	public void Interact(PlayerScript pScript);
+    public void GiveInput(Vector2 input);
 }
