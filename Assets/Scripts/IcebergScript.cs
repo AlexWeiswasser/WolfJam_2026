@@ -4,8 +4,20 @@ public class IcebergScript : MonoBehaviour
 {
 	[SerializeField] float speed;
 	[SerializeField] Rigidbody2D rb;
+	[SerializeField] Transform visual;
+	Transform lightHouse; 
 	Vector2 currentVelocity = Vector2.zero;
 
+	private void Start()
+	{
+		lightHouse = GameObject.Find("SecondSprite").transform;
+	}
+	private void Update()
+	{
+		Vector2 dir = (transform.position - lightHouse.position).normalized;
+		float angle = Mathf.Atan2(dir.y, dir.x);
+		visual.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+	}
 	private void FixedUpdate()
 	{
 		currentVelocity = rb.position + (Vector2)transform.right * speed * Time.fixedDeltaTime;

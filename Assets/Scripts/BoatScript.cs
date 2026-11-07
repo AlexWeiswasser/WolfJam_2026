@@ -42,7 +42,7 @@ public class BoatScript : MonoBehaviour
 				{
 					rend.sprite = shipSprites[0];
 					main.startColor = Color.yellow;
-					rend.color = Color.green;
+					rend.color = Color.yellow;
 				}
 				break;
 			case 1:
