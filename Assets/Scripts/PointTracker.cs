@@ -14,7 +14,7 @@ public static class PointTracker
     public static void ResetMult() { pointMult = null; }
     public static void GainPoints() 
     {
-        if (pointMult == null) pointMult = 0.1f;
+        if (pointMult == null) pointMult = 1f;
         else pointMult += .1f;
         int pointsGained = (int)(pointsPerBoat * pointMult); 
         int prevPoints = points;
