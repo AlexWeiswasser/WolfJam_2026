@@ -73,10 +73,8 @@ public class PlayerHandler : MonoBehaviour
 
 		foreach (Collider2D boat in currentBoats)
 		{
-			if(boat.TryGetComponent<BoatScript>(out var bScript))
-			{
-				bScript.RotateBoat(angle);
-			}
+			BoatScript bScript = boat.GetComponentInParent<BoatScript>();
+			if (bScript) bScript.RotateBoat(angle);
 		}
 	}
 }
