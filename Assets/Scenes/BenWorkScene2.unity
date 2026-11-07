@@ -844,6 +844,10 @@ MonoBehaviour:
   RightSpawnParent: {fileID: 315589132}
   boatPrefabs:
   - {fileID: 3391539808342929647, guid: 3b2bd533b7cdb3649b3777c5347f606f, type: 3}
+  iceBergPrefab: {fileID: 237220269089260609, guid: c94f7342479dafe4e86dfd4edb082a06, type: 3}
+  boatLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &741076475
 GameObject:
   m_ObjectHideFlags: 0
