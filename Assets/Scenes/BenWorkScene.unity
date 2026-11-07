@@ -3187,6 +3187,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5034998173104245240, guid: b9208fc6b8142e644a8feb166c06cf1e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5034998173104245240, guid: b9208fc6b8142e644a8feb166c06cf1e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6294095087195476756, guid: b9208fc6b8142e644a8feb166c06cf1e, type: 3}
       propertyPath: m_Name
       value: DraggingCircle
