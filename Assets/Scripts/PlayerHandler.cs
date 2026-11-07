@@ -4,11 +4,12 @@ using UnityEngine.InputSystem;
 public class PlayerHandler : MonoBehaviour
 {
 	[Header("Object References")]
-	[SerializeField] CircleCollider2D dottedCircle;
+	[SerializeField] Transform dottedCircle;
 	[SerializeField] Transform lampRoom;
 
 	[Header ("Tracking")]
 	Vector3 currentMousePos;
+	bool circleTracks = true; 
 	[SerializeField] float lightBeamSpeed;
 	[SerializeField] LayerMask boatLayer;
 
@@ -26,8 +27,11 @@ public class PlayerHandler : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		dottedCircle.transform.position = currentMousePos;
+		// Dotted circles
+		if(circleTracks)
+			dottedCircle.transform.position = currentMousePos;
 
+		// Light rotation
 		Vector3 dir = (currentMousePos - lampRoom.position).normalized;
 		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 		Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle);
@@ -43,19 +47,20 @@ public class PlayerHandler : MonoBehaviour
 	{
 		if (context.performed)
 		{
+			circleTracks = false;
 			mouseStart = currentMousePos;
-			ObtainShips();
 		}
 		else if (context.canceled)
 		{
 			mouseEnd = currentMousePos;
 			DirectShips();
+			circleTracks = true; 
 		}
 	}
 
 	private void ObtainShips()
 	{
-		float radius = dottedCircle.radius;
+		float radius = dottedCircle.localScale.x / 2;
 		currentBoats = Physics2D.OverlapCircleAll(dottedCircle.transform.position, radius, boatLayer);
 	}
 
@@ -63,6 +68,8 @@ public class PlayerHandler : MonoBehaviour
 	{
 		Vector2 dir = (mouseEnd - mouseStart).normalized;
 		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+		ObtainShips();
 
 		foreach (Collider2D boat in currentBoats)
 		{

@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d172cddbece4e2f4cb6f72bf942e6d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHandler
-  dottedCircle: {fileID: 1175950282}
+  dottedCircle: {fileID: 1175950281}
   lampRoom: {fileID: 1428193241}
   lightBeamSpeed: 50
   boatLayer:
