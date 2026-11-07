@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ public class ReputationUIScript : MonoBehaviour
     int currentTargetRep = ReputationTracker.MaxReputation;
     float accumulator = 0;
 
+    public static event Action OnReputationReachedZero;
 
     void Start()
     {
@@ -34,6 +36,14 @@ public class ReputationUIScript : MonoBehaviour
 
     void Update()
     {
+        if (!GameOverCanvas.GameOver)
+        {
+            if (internalRepCount <= 0)
+            {
+                OnReputationReachedZero?.Invoke();
+            }
+        }
+
         float timeBetween = timeBetweenPoints;
         if (accumulator < timeBetween)
         {
@@ -53,6 +63,8 @@ public class ReputationUIScript : MonoBehaviour
             internalRepCount -= scoreGainedThisFrame;
             DisplayReputation();
         }
+
+        
     }
 
     void UpdateReputation(int reputationGained, Vector2Int range)

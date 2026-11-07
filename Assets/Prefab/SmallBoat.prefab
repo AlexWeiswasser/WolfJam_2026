@@ -122,8 +122,8 @@ MonoBehaviour:
   rend: {fileID: 8493676052823264582}
   col: {fileID: 8880832892323680130}
   shipSprites:
-  - {fileID: 21300000, guid: 0446653eecab77948a45f9f60aea534a, type: 3}
-  - {fileID: 21300000, guid: 0446653eecab77948a45f9f60aea534a, type: 3}
+  - {fileID: 21300000, guid: ee58f756d6446e445a2fc2c621339e51, type: 3}
+  - {fileID: 21300000, guid: ada3d3b231d8fde48b0094fd059c4f06, type: 3}
   - {fileID: 21300000, guid: b8ab2199ed71d4f44bf342ebef03578b, type: 3}
   - {fileID: 21300000, guid: 3073b6b4a4ea7fc45b41a8f86d6e9e7e, type: 3}
 --- !u!50 &8105663656230541301
