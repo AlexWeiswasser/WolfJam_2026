@@ -50,5 +50,8 @@ TagManager:
   - name: Fog
     uniqueID: 2568913721
     locked: 0
+  - name: DraggingUI
+    uniqueID: 1010565293
+    locked: 0
   m_RenderingLayers:
   - Default

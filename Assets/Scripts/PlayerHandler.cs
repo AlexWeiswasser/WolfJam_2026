@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerHandler : MonoBehaviour
 {
 	[Header("Object References")]
-	[SerializeField] Transform dottedCircle;
+	[SerializeField] DraggingCircleScript draggingCircle;
 	[SerializeField] Transform lampRoom;
 
 	[Header ("Tracking")]
@@ -29,7 +29,7 @@ public class PlayerHandler : MonoBehaviour
 	{
 		// Dotted circles
 		if(circleTracks)
-			dottedCircle.transform.position = currentMousePos;
+			draggingCircle.SetPosition(currentMousePos);
 
 		// Light rotation
 		Vector3 dir = (currentMousePos - lampRoom.position).normalized;
@@ -49,19 +49,21 @@ public class PlayerHandler : MonoBehaviour
 		{
 			circleTracks = false;
 			mouseStart = currentMousePos;
+			draggingCircle.ToggleArrow(true);
 		}
 		else if (context.canceled)
 		{
 			mouseEnd = currentMousePos;
 			DirectShips();
 			circleTracks = true; 
+			draggingCircle.ToggleArrow(false);
 		}
 	}
 
 	private void ObtainShips()
 	{
-		float radius = dottedCircle.localScale.x / 2;
-		currentBoats = Physics2D.OverlapCircleAll(dottedCircle.transform.position, radius, boatLayer);
+		float radius = draggingCircle.GetScale().x / 2;
+		currentBoats = Physics2D.OverlapCircleAll(draggingCircle.GetPosition(), radius, boatLayer);
 	}
 
 	private void DirectShips()
