@@ -78,39 +78,41 @@ public class BoatSpawner : MonoBehaviour
         spawns.Add(rightSpawn);
 	}
 
-	// Spawning
+	// Spawn data
 	[SerializeField] GameObject[] boatPrefabs;
 	[SerializeField] GameObject iceBergPrefab;
 	[SerializeField] LayerMask boatLayer;
     float timeTilSpawn = 10;
-    float currentTime = 10;
-	float distanceBetweenSpawnsRadius = 10;
 	int amountTilBergSpawn = 6;
 	int currentTimesSpawned = 0;
 
+	// Spawn runtime
+	float currentTime = 10;
+	int maxSpawnAttempts = 20;   
+	float retryDelay = 0.25f;
+	float distanceBetweenSpawnsRadius = 5;
+
+
 	private void Update()
 	{
-        currentTime += Time.deltaTime;
-        if(currentTime >= timeTilSpawn)
-        {
-            currentTime -= timeTilSpawn;
-            SpawnBoat();
-        }
+		currentTime += Time.deltaTime;
+		if (currentTime >= timeTilSpawn)
+		{
+			if (TrySpawnBoat())
+			{
+				currentTime -= timeTilSpawn;
+			}
+			else
+			{
+				currentTime = timeTilSpawn - retryDelay;
+			}
+		}
 	}
 
-    private void SpawnBoat()
-    {
-		Collider2D boat;
-		Vector2 spawnPos;
-		int spawn;
-		do
-		{
-			spawn = Random.Range(0, spawns.Count);
-			spawnPos = spawns[spawn].GetSpawnPos();
-			boat = Physics2D.OverlapCircle(spawnPos, distanceBetweenSpawnsRadius, boatLayer);
-		}
-		while (boat != null);
-		Quaternion spawnRot = Quaternion.Euler(spawns[spawn].GetSpawnRot());
+	private bool TrySpawnBoat()
+	{
+		if (!TryGetSpawnPoint(out Vector2 spawnPos, out Quaternion spawnRot))
+			return false;
 
 		if (currentTimesSpawned >= amountTilBergSpawn)
 		{
@@ -123,6 +125,27 @@ public class BoatSpawner : MonoBehaviour
 			Instantiate(boatPrefabs[boatType], spawnPos, spawnRot);
 			currentTimesSpawned++;
 		}
+		return true;
+	}
+
+	private bool TryGetSpawnPoint(out Vector2 spawnPos, out Quaternion spawnRot)
+	{
+		for (int i = 0; i < maxSpawnAttempts; i++)
+		{
+			Spawn spawn = spawns[Random.Range(0, spawns.Count)];
+			Vector2 candidate = spawn.GetSpawnPos();
+
+			if (Physics2D.OverlapCircle(candidate, distanceBetweenSpawnsRadius, boatLayer) == null)
+			{
+				spawnPos = candidate;
+				spawnRot = Quaternion.Euler(spawn.GetSpawnRot());
+				return true;
+			}
+		}
+
+		spawnPos = default;
+		spawnRot = default;
+		return false;
 	}
 
 	void UpdatePoints(int pointsGained, Vector2Int range)
