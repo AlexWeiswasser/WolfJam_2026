@@ -16,7 +16,7 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private int sfxPoolSize = 30;
     private int nextSfxIndex;
 
-    private int musicState = 1;
+    private int musicState = 0;
     /* 0 = intro music
      * 1 = transition music
      * 2 = main loop
