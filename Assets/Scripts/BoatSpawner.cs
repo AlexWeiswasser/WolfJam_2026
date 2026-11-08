@@ -83,6 +83,8 @@ public class BoatSpawner : MonoBehaviour
 	[SerializeField] GameObject iceBergPrefab;
 	[SerializeField] LayerMask boatLayer;
     float timeTilSpawn = 10;
+	float timeTilIceberg = 120;
+	float overallTime = 0;
 	int amountTilBergSpawn = 6;
 	int currentTimesSpawned = 0;
 
@@ -91,10 +93,15 @@ public class BoatSpawner : MonoBehaviour
 	int maxSpawnAttempts = 20;   
 	float retryDelay = 0.25f;
 	float distanceBetweenSpawnsRadius = 5;
-
+	bool spawnIcebergs = false; 
 
 	private void Update()
 	{
+		if (!TutorialCanvas.TutorialCompleted) return;
+
+		overallTime += Time.deltaTime;
+		if (overallTime > timeTilIceberg && !spawnIcebergs) spawnIcebergs = true;
+		
 		currentTime += Time.deltaTime;
 		if (currentTime >= timeTilSpawn)
 		{
@@ -123,7 +130,7 @@ public class BoatSpawner : MonoBehaviour
 		{
 			int boatType = Random.Range(0, boatPrefabs.Length);
 			Instantiate(boatPrefabs[boatType], spawnPos, spawnRot);
-			currentTimesSpawned++;
+			if(spawnIcebergs) currentTimesSpawned++;
 		}
 		return true;
 	}

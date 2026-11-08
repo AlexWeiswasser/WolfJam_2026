@@ -212,6 +212,7 @@ MonoBehaviour:
   rb: {fileID: 3201462783268629543}
   rend: {fileID: 4301757039798608634}
   burstParticles: {fileID: 0}
+  deathParticles: {fileID: 0}
   shipSprites: []
   cowboySounds:
   - {fileID: 8300000, guid: 895afc90d3ba1124b9f0350c54c39f39, type: 3}
@@ -232,6 +233,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7fc70702b62e9664582f6c1460925469, type: 3}
   boatCrash: {fileID: 8300000, guid: 127cf6137d961b54fbf56fd8c15123dc, type: 3}
   scorePoint: {fileID: 8300000, guid: 843fc4f231921ce42812a467453421bf, type: 3}
+  defaultDash: {fileID: 8300000, guid: 73fced6a3d98f0a4789f7c24594e12cd, type: 3}
+  sfxCooldown: 0
 --- !u!50 &3201462783268629543
 Rigidbody2D:
   serializedVersion: 5

@@ -1,8 +1,12 @@
+using System;
 using UnityEngine;
 
 public class DockScript : MonoBehaviour
 {
 	[SerializeField] BoatScript.ShipType shipType;
+	[SerializeField] bool tutorialDock = false;
+
+	public static event Action TutorialDockReached;
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
@@ -18,6 +22,10 @@ public class DockScript : MonoBehaviour
 					{
 						PointTracker.GainPoints();
 						bScript.Obliterate(true);
+						if (tutorialDock)
+						{
+							TutorialDockReached?.Invoke();
+						}
 					}
 				}
 			}
