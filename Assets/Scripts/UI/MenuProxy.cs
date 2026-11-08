@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class MenuProxy : MonoBehaviour
 {
+    private void Start()
+    {
+        Cursor.visible = true;
+    }
+
     public void LoadScene(string sceneName)
     {
         SceneLoader.Instance.LoadScene(sceneName);

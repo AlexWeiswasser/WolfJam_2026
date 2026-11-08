@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerHandler : MonoBehaviour
 {
+	public static event Action pauseEvent;
+
 	[Header("Object References")]
 	[SerializeField] DraggingCircleScript draggingCircle;
 	[SerializeField] Transform lampRoom;
@@ -93,4 +96,6 @@ public class PlayerHandler : MonoBehaviour
 			}
 		}
 	}
+
+	public void Pause() { pauseEvent?.Invoke(); }
 }
