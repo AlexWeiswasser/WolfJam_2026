@@ -32,6 +32,8 @@ public class PlayerHandler : MonoBehaviour
 		// Dotted circles
 		draggingCircle.SetPosition(currentMousePos);
 
+		if (!TutorialCanvas.TutorialCompleted) return;
+
 		// Light rotation
 		Vector3 dir = (currentMousePos - lampRoom.position).normalized;
 		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;

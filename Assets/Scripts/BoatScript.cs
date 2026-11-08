@@ -136,7 +136,7 @@ public class BoatScript : MonoBehaviour
 		canPlaySound = true;
 	}
 
-	private void OnTriggerEnter2D(Collider2D collision)
+	protected virtual void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.CompareTag("Boat")) Obliterate(false);
 		else if (collision.CompareTag("Wall")) Obliterate(false);
