@@ -181,8 +181,8 @@ MonoBehaviour:
   burstParticles: {fileID: 5421380482794615692}
   shipSprites:
   - {fileID: 21300000, guid: 652f3b17c8345884e8e66392efd18c0d, type: 3}
-  - {fileID: 21300000, guid: 6152e72b5f551e24c940be9c1b2d97f3, type: 3}
-  - {fileID: 21300000, guid: 6152e72b5f551e24c940be9c1b2d97f3, type: 3}
+  - {fileID: 21300000, guid: 1ee467a0bbaacce4c87e5c9455a54b50, type: 3}
+  - {fileID: 21300000, guid: ac8220395f9e0d947982e28d1c2609cd, type: 3}
   - {fileID: 21300000, guid: 1123f676348702e4db474c03b2d93868, type: 3}
   cowboySounds:
   - {fileID: 8300000, guid: 895afc90d3ba1124b9f0350c54c39f39, type: 3}
