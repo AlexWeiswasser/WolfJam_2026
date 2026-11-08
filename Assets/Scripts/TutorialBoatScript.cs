@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class TutorialBoatScript : BoatScript
 {
+	[SerializeField] ParticleSystem[] moveParticles;
+
     private float baseSpeed;
     protected override void Awake()
     {
@@ -21,10 +23,22 @@ public class TutorialBoatScript : BoatScript
         rend.sprite = shipSprites[2];
         main.startColor = Color.green;
         main2.startColor = Color.green;
+
+		foreach (ParticleSystem part in moveParticles)
+		{
+			var emit = part.emission;
+			emit.enabled = false;
+        }
     }
 
     public override IEnumerator BoostBoat() 
 	{
+        foreach (ParticleSystem part in moveParticles)
+        {
+            var emit = part.emission;
+			if(!emit.enabled) emit.enabled = true;
+        }
+
         speed = baseSpeed;
 		yield return new WaitForFixedUpdate(); 
 		currentBoostVelocity += (Vector2)transform.right * boostForce;
