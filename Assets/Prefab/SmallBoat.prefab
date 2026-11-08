@@ -9911,7 +9911,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 870a428600af40944a29b5dff6c478ee, type: 3}
   - {fileID: 8300000, guid: 7fc70702b62e9664582f6c1460925469, type: 3}
   boatCrash: {fileID: 8300000, guid: 127cf6137d961b54fbf56fd8c15123dc, type: 3}
-  scorePoint: {fileID: 8300000, guid: 3c80dfa5b1f351845960624080dca6a5, type: 3}
+  scorePoint: {fileID: 8300000, guid: e9207aedf091eb945b4cf80022c4205d, type: 3}
   sfxCooldown: 2
   defaultDash: {fileID: 8300000, guid: 73fced6a3d98f0a4789f7c24594e12cd, type: 3}
 --- !u!50 &8105663656230541301
