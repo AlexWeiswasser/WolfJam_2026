@@ -21,9 +21,10 @@ public class DockScript : MonoBehaviour
 				{
 					if (bScript.GetShipType() == shipType)
 					{
-						PointTracker.GainPoints();
+                        DockReached?.Invoke(shipType);
+                        PointTracker.GainPoints();
 						bScript.Obliterate(true);
-						DockReached.Invoke(shipType);
+						
 						if (tutorialDock)
 						{
 							TutorialDockReached?.Invoke();

@@ -23,7 +23,7 @@ public class DockPointsCanvas : MonoBehaviour
 
     private void OnShipDelivered(BoatScript.ShipType type)
     {
-        TweenLabel(GetPointSettings(type).textLabel);
+        StartCoroutine(TweenLabel(GetPointSettings(type).textLabel));
     }
 
     private PointSettings GetPointSettings(BoatScript.ShipType type)
@@ -44,7 +44,7 @@ public class DockPointsCanvas : MonoBehaviour
         text.rectTransform.DOKill();
         text.rectTransform.localScale = Vector3.zero;
 
-        text.rectTransform.DOScale(Vector3.one, 0.25f).SetEase(Ease.OutCubic);
+        text.rectTransform.DOScale(Vector3.one, 0.25f).SetEase(Ease.OutBack);
         yield return new WaitForSeconds(2);
         text.rectTransform.DOScale(Vector3.zero, 0.25f).SetEase(Ease.InCubic);
     }
