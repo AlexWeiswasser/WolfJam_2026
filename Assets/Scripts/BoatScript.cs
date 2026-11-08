@@ -20,7 +20,8 @@ public class BoatScript : MonoBehaviour
 	[Header ("References")]
 	[SerializeField] Rigidbody2D rb;
 	[SerializeField] SpriteRenderer rend;
-	[SerializeField] ParticleSystem burstParticles; 
+	[SerializeField] ParticleSystem burstParticles;
+	[SerializeField] ParticleSystem deathParticles; 
 	[Tooltip ("Cowboy, Robot, Viking, Skeleton")]
 	[SerializeField] Sprite[] shipSprites;
 
@@ -34,12 +35,6 @@ public class BoatScript : MonoBehaviour
 	[SerializeField] float sfxCooldown;
 	private bool canPlaySound = true;
 
-
-
-
-
-
-
     // Movement
     Vector2 currentVelocity = Vector2.zero;
 	Vector2 currentBoostVelocity = Vector2.zero;
@@ -51,6 +46,7 @@ public class BoatScript : MonoBehaviour
 		shipType = (ShipType)type;
 
 		var main = burstParticles.main;
+		var main2 = deathParticles.main;
 
 		switch (type)
 		{
@@ -58,28 +54,28 @@ public class BoatScript : MonoBehaviour
 				{
 					rend.sprite = shipSprites[0];
 					main.startColor = Color.yellow;
-					rend.color = Color.yellow;
+					main2.startColor = Color.yellow;
 				}
 				break;
 			case 1:
 				{
 					rend.sprite = shipSprites[1];
 					main.startColor = Color.red;
-					rend.color = Color.red;
+					main2.startColor = Color.red;
 				}
 				break;
 			case 2:
 				{
 					rend.sprite = shipSprites[2];
 					main.startColor = Color.green;
-					rend.color = Color.green;
+					main2.startColor = Color.green;
 				}
 				break;
 			case 3:
 				{
 					rend.sprite = shipSprites[3];
 					main.startColor = Color.purple;
-					rend.color = Color.purple;
+					main2.startColor = Color.purple;
 				}
 				break;
 		}
@@ -126,6 +122,7 @@ public class BoatScript : MonoBehaviour
 			canPlaySound = false;
 			StartCoroutine(WaitForSeconds(sfxCooldown));
 		}
+
 		burstParticles.Clear();
 		burstParticles.Play();
 	}
@@ -164,6 +161,10 @@ public class BoatScript : MonoBehaviour
 			MusicManager.Instance.PlaySfx(boatCrash);
 		else if (success)
 			MusicManager.Instance.PlaySfx(scorePoint);
+
+		deathParticles.transform.SetParent(null);
+		deathParticles.Clear();
+		deathParticles.Play();
 		Destroy(gameObject);
 	}
 }
