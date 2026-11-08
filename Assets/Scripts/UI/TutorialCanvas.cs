@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TutorialCanvas : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class TutorialCanvas : MonoBehaviour
     void Awake()
     {
         TutorialCompleted = false;
+        Cursor.visible = false;
     }
 
     public void ActivateBeginButton()

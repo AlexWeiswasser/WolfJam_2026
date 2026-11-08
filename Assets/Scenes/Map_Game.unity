@@ -1062,6 +1062,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: da82c025-24bd-44f9-8589-40248b543790
     m_ActionName: 'Captain/Click[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 658359247}
+        m_TargetAssemblyTypeName: PlayerHandler, Assembly-CSharp
+        m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e27a023a-1d9a-4e25-becb-4c763fe93d82
+    m_ActionName: 'Captain/Escape[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Captain
@@ -2940,6 +2956,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 333451070348440056, guid: 1ed82c3bbc1a8a742b4b447d0e3abc5a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2181468642893370007, guid: 1ed82c3bbc1a8a742b4b447d0e3abc5a, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3801270252970004731, guid: 1ed82c3bbc1a8a742b4b447d0e3abc5a, type: 3}

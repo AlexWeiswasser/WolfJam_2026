@@ -1,9 +1,18 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PauseCanvas : MonoBehaviour
 {
+    private void OnEnable()
+    {
+        PlayerHandler.pauseEvent += Pause;
+    }
+
+    private void OnDisable()
+    {
+        PlayerHandler.pauseEvent -= Pause;
+    }
+
     [SerializeField] GameObject pauseOverlay;
     [SerializeField] Image backgroundImage; 
     [SerializeField] GameObject quitButton;
@@ -20,9 +29,17 @@ public class PauseCanvas : MonoBehaviour
     
     public void Pause()
     {
+        if (Paused)
+        {
+            UnPause();
+            return;
+        }
+
         Paused = true;
         pauseOverlay.SetActive(true);
         Time.timeScale = 0;
+
+        Cursor.visible = true;
     }
 
     public void UnPause()
@@ -30,8 +47,10 @@ public class PauseCanvas : MonoBehaviour
         Paused = false;
         pauseOverlay.SetActive(false);
         Time.timeScale = 1;
+
+        Cursor.visible = false;
     }
-    
+
     public void Quit()
     {
         SceneLoader.Instance.LoadScene(SceneLoader.mainMenuName);
