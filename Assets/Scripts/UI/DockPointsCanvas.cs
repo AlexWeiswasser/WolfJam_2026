@@ -20,12 +20,23 @@ public class DockPointsCanvas : MonoBehaviour
     void Start()
     {
         ResetText();
-        DockScript.DockReached += OnShipDelivered;
-        DockScript.TutorialDockReached += OnTutorialDockReached;
-        PointTracker.OnPointsGained += OnPointsGained;
     }
 
-    private void OnShipDelivered(BoatScript.ShipType type)
+	void OnEnable()
+	{
+		DockScript.DockReached += OnShipDelivered;
+		DockScript.TutorialDockReached += OnTutorialDockReached;
+		PointTracker.OnPointsGained += OnPointsGained;
+	}
+
+	void OnDisable()
+	{
+		DockScript.DockReached -= OnShipDelivered;
+		DockScript.TutorialDockReached -= OnTutorialDockReached;
+		PointTracker.OnPointsGained -= OnPointsGained;
+	}
+
+	private void OnShipDelivered(BoatScript.ShipType type)
     {
         StartCoroutine(TweenLabel(GetPointSettings(type).textLabel));
     }

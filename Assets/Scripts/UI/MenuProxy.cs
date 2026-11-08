@@ -6,7 +6,11 @@ public class MenuProxy : MonoBehaviour
     private void Start()
     {
         Cursor.visible = true;
-    }
+
+		PointTracker.ResetMult();
+		PointTracker.ResetPoints();
+		ReputationTracker.ResetReputation();
+	}
 
     public void LoadScene(string sceneName)
     {

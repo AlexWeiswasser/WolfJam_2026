@@ -30,12 +30,14 @@ public class TutorialCanvas : MonoBehaviour
     public void ActivateBeginButton()
     {
         beginButton.SetEnabled(true);
-    }
+		Cursor.visible = true;
+	}
 
-    public void Complete()
+	public void Complete()
     {
         TutorialCompleted = true;
         tutorialOverlay.SetActive(false);
         tutorialArea.SetActive(false);
-    }
+		Cursor.visible = false;
+	}
 }

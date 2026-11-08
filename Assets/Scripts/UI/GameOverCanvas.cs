@@ -28,15 +28,23 @@ public class GameOverCanvas : MonoBehaviour
         GameOver = true;
         gameOverOverlay.SetActive(true);
         finalScoreText.SetText($"Final Score:\n{PointTracker.GetPoints()}");
-    }
 
-    public void Retry()
+		Cursor.visible = true;
+	}
+
+	public void Retry()
     {
+        PointTracker.ResetMult();
+        PointTracker.ResetPoints();
+        ReputationTracker.ResetReputation();
         SceneLoader.Instance.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void Quit()
     {
-        SceneLoader.Instance.LoadScene(SceneLoader.mainMenuName);
+		PointTracker.ResetMult();
+		PointTracker.ResetPoints();
+        ReputationTracker.ResetReputation();
+		SceneLoader.Instance.LoadScene(SceneLoader.mainMenuName);
     }
 }
