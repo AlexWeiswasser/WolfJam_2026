@@ -97,9 +97,11 @@ public class BoatSpawner : MonoBehaviour
 
 	private void Update()
 	{
+		if (!TutorialCanvas.TutorialCompleted) return;
+
 		overallTime += Time.deltaTime;
 		if (overallTime > timeTilIceberg && !spawnIcebergs) spawnIcebergs = true;
-
+		
 		currentTime += Time.deltaTime;
 		if (currentTime >= timeTilSpawn)
 		{
