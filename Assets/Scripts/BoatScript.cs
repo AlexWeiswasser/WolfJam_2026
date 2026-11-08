@@ -167,6 +167,7 @@ public class BoatScript : MonoBehaviour
 			deathParticles.transform.SetParent(null);
 			deathParticles.Clear();
 			deathParticles.Play();
+			PointTracker.ResetMult();
 		}
 
 		Destroy(gameObject);

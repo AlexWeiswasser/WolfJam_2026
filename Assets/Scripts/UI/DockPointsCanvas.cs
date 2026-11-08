@@ -8,6 +8,8 @@ public class DockPointsCanvas : MonoBehaviour
 {
     [SerializeField] private PointSettings[] settings;
 
+    TMP_Text recentText;
+
     [System.Serializable]
     class PointSettings
     {
@@ -20,6 +22,7 @@ public class DockPointsCanvas : MonoBehaviour
         ResetText();
         DockScript.DockReached += OnShipDelivered;
         DockScript.TutorialDockReached += OnTutorialDockReached;
+        PointTracker.OnPointsGained += OnPointsGained;
     }
 
     private void OnShipDelivered(BoatScript.ShipType type)
@@ -42,6 +45,7 @@ public class DockPointsCanvas : MonoBehaviour
 
     private IEnumerator TweenLabel(TMP_Text text)
     {
+        recentText = text;
         text.rectTransform.DOKill();
         text.rectTransform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
 
@@ -65,5 +69,10 @@ public class DockPointsCanvas : MonoBehaviour
         var label = GetPointSettings(BoatScript.ShipType.Viking).textLabel;
         label.rectTransform.DOKill();
         label.rectTransform.localScale = Vector2.zero;
+    }
+
+    private void OnPointsGained(int points, Vector2Int gained)
+    {
+        recentText.text = points.ToString();
     }
 }
