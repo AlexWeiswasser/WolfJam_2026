@@ -42,9 +42,10 @@ public class DockPointsCanvas : MonoBehaviour
     private IEnumerator TweenLabel(TMP_Text text)
     {
         text.rectTransform.DOKill();
-        text.rectTransform.localScale = Vector3.zero;
+        text.rectTransform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
 
-        text.rectTransform.DOScale(Vector3.one, 0.25f).SetEase(Ease.OutBack);
+        text.rectTransform.DOShakeAnchorPos(0.2f, 5, 50);
+        text.rectTransform.DOScale(Vector3.one, 0.25f).SetEase(Ease.OutCubic);
         yield return new WaitForSeconds(2);
         text.rectTransform.DOScale(Vector3.zero, 0.25f).SetEase(Ease.InCubic);
     }
