@@ -95,6 +95,8 @@ public class BoatSpawner : MonoBehaviour
 
 	private void Update()
 	{
+		if (!TutorialCanvas.TutorialCompleted) return;
+		
 		currentTime += Time.deltaTime;
 		if (currentTime >= timeTilSpawn)
 		{

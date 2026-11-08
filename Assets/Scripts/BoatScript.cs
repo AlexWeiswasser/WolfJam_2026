@@ -12,36 +12,36 @@ public class BoatScript : MonoBehaviour
 	}
 
 	[Header ("Stats")]
-	[SerializeField] float speed;
-	[SerializeField] float boostForce;
-	ShipType shipType;
+	[SerializeField] protected float speed;
+	[SerializeField] protected float boostForce;
+	protected ShipType shipType;
 	public ShipType GetShipType() => shipType;
 
 	[Header ("References")]
-	[SerializeField] Rigidbody2D rb;
-	[SerializeField] SpriteRenderer rend;
-	[SerializeField] ParticleSystem burstParticles;
-	[SerializeField] ParticleSystem deathParticles; 
+	[SerializeField] protected Rigidbody2D rb;
+	[SerializeField] protected SpriteRenderer rend;
+	[SerializeField] protected ParticleSystem burstParticles;
+	[SerializeField] protected ParticleSystem deathParticles; 
 	[Tooltip ("Cowboy, Robot, Viking, Skeleton")]
-	[SerializeField] Sprite[] shipSprites;
+	[SerializeField] protected Sprite[] shipSprites;
 
 	[Header("Sounds")]
-	[SerializeField] AudioClip[] cowboySounds;
-	[SerializeField] AudioClip[] robotSounds;
-	[SerializeField] AudioClip[] vikingSounds;
-	[SerializeField] AudioClip[] skeletonSounds;
-	[SerializeField] AudioClip boatCrash;
-    [SerializeField] AudioClip scorePoint;
-    [SerializeField] AudioClip defaultDash;
-	[SerializeField] float sfxCooldown;
-	private bool canPlaySound = true;
+	[SerializeField] protected AudioClip[] cowboySounds;
+	[SerializeField] protected AudioClip[] robotSounds;
+	[SerializeField] protected AudioClip[] vikingSounds;
+	[SerializeField] protected AudioClip[] skeletonSounds;
+	[SerializeField] protected AudioClip boatCrash;
+    [SerializeField] protected AudioClip scorePoint;
+	[SerializeField] protected float sfxCooldown;
+	[SerializeField] protected AudioClip defaultDash;
+	protected bool canPlaySound = true;
 
     // Movement
-    Vector2 currentVelocity = Vector2.zero;
-	Vector2 currentBoostVelocity = Vector2.zero;
-	float boostDamping = .9f;
+    protected Vector2 currentVelocity = Vector2.zero;
+	protected Vector2 currentBoostVelocity = Vector2.zero;
+	protected float boostDamping = .9f;
 
-	private void Awake()
+	protected virtual void Awake()
 	{
 		int type = Random.Range(0, 4);
 		shipType = (ShipType)type;
@@ -92,7 +92,7 @@ public class BoatScript : MonoBehaviour
 	}
 
 	public void RotateBoat(float angle) { rb.MoveRotation(angle); }
-	public IEnumerator BoostBoat() 
+	public virtual IEnumerator BoostBoat() 
 	{
 		yield return new WaitForFixedUpdate(); 
 		currentBoostVelocity += (Vector2)transform.right * boostForce;
@@ -130,7 +130,7 @@ public class BoatScript : MonoBehaviour
 		burstParticles.Play();
 	}
 
-	IEnumerator WaitForSeconds(float seconds)
+	protected virtual IEnumerator WaitForSeconds(float seconds)
 	{
 		yield return new WaitForSeconds(seconds);
 		canPlaySound = true;

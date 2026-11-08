@@ -16,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Boat
-  - 
+  - TutorialBoat
   - 
   - 
   - 
@@ -42,6 +42,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Tutorial
+    uniqueID: 3352373339
+    locked: 0
   - name: Map
     uniqueID: 3648839353
     locked: 0
@@ -50,6 +53,12 @@ TagManager:
     locked: 0
   - name: Fog
     uniqueID: 2568913721
+    locked: 0
+  - name: WorldCanvas
+    uniqueID: 3194686525
+    locked: 0
+  - name: TutorialObjects
+    uniqueID: 2733960969
     locked: 0
   - name: DraggingUI
     uniqueID: 1010565293
