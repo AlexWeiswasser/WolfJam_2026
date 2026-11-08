@@ -374,18 +374,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7179821530794155000, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7179821530794155000, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7179821530794155000, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179821530794155000, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2078123360}
     - target: {fileID: 7179821530794155000, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1874352982}
+    - target: {fileID: 7179821530794155000, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179821530794155000, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7179821530794155000, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
@@ -393,15 +405,35 @@ PrefabInstance:
       value: LoadScene
       objectReference: {fileID: 0}
     - target: {fileID: 7179821530794155000, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetState
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179821530794155000, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: MenuProxy, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179821530794155000, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MusicManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179821530794155000, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7179821530794155000, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: BenWorkScene2
       objectReference: {fileID: 0}
     - target: {fileID: 7179821530794155000, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: BenWorkScene2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179821530794155000, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179821530794155000, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8035334716758513261, guid: 5301764b33eba6d4bb7e7869ba0e497f, type: 3}
@@ -1248,6 +1280,7 @@ MonoBehaviour:
   transitionMusic: {fileID: 8300000, guid: f902f023067467c489575072f8fb587e, type: 3}
   gameLoopMusic: {fileID: 8300000, guid: 783752e10c0be50499108758a7dee153, type: 3}
   sfxPoolSize: 30
+  pitchVariance: 0.15
 --- !u!4 &1874352983
 Transform:
   m_ObjectHideFlags: 0
