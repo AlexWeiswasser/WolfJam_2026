@@ -152,6 +152,6 @@ public class BoatSpawner : MonoBehaviour
 	{
 		int mult = range.y / 500;
 		float tempTimeToSpawn = 10 - (mult * .5f);
-		timeTilSpawn = Mathf.Clamp(tempTimeToSpawn, 1, 10);
+		timeTilSpawn = Mathf.Clamp(tempTimeToSpawn, 3, 10);
 	}
 }
