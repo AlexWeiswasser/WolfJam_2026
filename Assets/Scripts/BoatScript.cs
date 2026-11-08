@@ -160,14 +160,15 @@ public class BoatScript : MonoBehaviour
 	{
 		if (success) ReputationTracker.AddReputation();
 		else ReputationTracker.LoseReputation();
+		if (!success) MusicManager.Instance.PlaySfx(boatCrash);
+		else if (success) MusicManager.Instance.PlaySfx(scorePoint);
 		if (!success)
-			MusicManager.Instance.PlaySfx(boatCrash);
-		else if (success)
-			MusicManager.Instance.PlaySfx(scorePoint);
+		{
+			deathParticles.transform.SetParent(null);
+			deathParticles.Clear();
+			deathParticles.Play();
+		}
 
-		deathParticles.transform.SetParent(null);
-		deathParticles.Clear();
-		deathParticles.Play();
 		Destroy(gameObject);
 	}
 }
