@@ -162,6 +162,7 @@ public class BoatScript : MonoBehaviour
 		else if (success)
 			MusicManager.Instance.PlaySfx(scorePoint);
 
+		deathParticles.transform.SetParent(null);
 		deathParticles.Clear();
 		deathParticles.Play();
 		Destroy(gameObject);
