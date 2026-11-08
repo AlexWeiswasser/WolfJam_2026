@@ -10,7 +10,7 @@ public class IcebergScript : MonoBehaviour
 
 	private void Start()
 	{
-		lightHouse = GameObject.Find("SecondSprite").transform;
+		lightHouse = GameObject.Find("Lighthouse").transform;
 	}
 	private void Update()
 	{
