@@ -19,6 +19,7 @@ public class DockPointsCanvas : MonoBehaviour
     {
         ResetText();
         DockScript.DockReached += OnShipDelivered;
+        DockScript.TutorialDockReached += OnTutorialDockReached;
     }
 
     private void OnShipDelivered(BoatScript.ShipType type)
@@ -56,5 +57,13 @@ public class DockPointsCanvas : MonoBehaviour
         {
             settings[i].textLabel.rectTransform.localScale = Vector3.zero;
         }
+    }
+
+    // hacky way to make tutorial not show points label
+    private void OnTutorialDockReached()
+    {
+        var label = GetPointSettings(BoatScript.ShipType.Viking).textLabel;
+        label.rectTransform.DOKill();
+        label.rectTransform.localScale = Vector2.zero;
     }
 }
