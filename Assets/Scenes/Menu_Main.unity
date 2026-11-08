@@ -204,7 +204,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 56066236748896226, guid: 113a9e695537e3d488467e666565f90a, type: 3}
       propertyPath: m_text
-      value: Lighthouse Game
+      value: 'Lighthouse
+
+        Time Machine'
       objectReference: {fileID: 0}
     - target: {fileID: 56066236748896226, guid: 113a9e695537e3d488467e666565f90a, type: 3}
       propertyPath: m_fontSize
@@ -213,18 +215,48 @@ PrefabInstance:
     - target: {fileID: 56066236748896226, guid: 113a9e695537e3d488467e666565f90a, type: 3}
       propertyPath: m_fontSizeBase
       value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 56066236748896226, guid: 113a9e695537e3d488467e666565f90a, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2542702232361458001, guid: 113a9e695537e3d488467e666565f90a, type: 3}
       propertyPath: m_Name
       value: TextUGUI
       objectReference: {fileID: 0}
     - target: {fileID: 3199505412971274193, guid: 113a9e695537e3d488467e666565f90a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199505412971274193, guid: 113a9e695537e3d488467e666565f90a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199505412971274193, guid: 113a9e695537e3d488467e666565f90a, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199505412971274193, guid: 113a9e695537e3d488467e666565f90a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199505412971274193, guid: 113a9e695537e3d488467e666565f90a, type: 3}
       propertyPath: m_SizeDelta.x
       value: 661.3
       objectReference: {fileID: 0}
+    - target: {fileID: 3199505412971274193, guid: 113a9e695537e3d488467e666565f90a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 331
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199505412971274193, guid: 113a9e695537e3d488467e666565f90a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -25
+      objectReference: {fileID: 0}
     - target: {fileID: 4447430011456097145, guid: 113a9e695537e3d488467e666565f90a, type: 3}
       propertyPath: m_text
-      value: Lighthouse Game
+      value: 'Lighthouse
+
+        Time Machine'
       objectReference: {fileID: 0}
     - target: {fileID: 4447430011456097145, guid: 113a9e695537e3d488467e666565f90a, type: 3}
       propertyPath: m_fontSize
@@ -233,6 +265,10 @@ PrefabInstance:
     - target: {fileID: 4447430011456097145, guid: 113a9e695537e3d488467e666565f90a, type: 3}
       propertyPath: m_fontSizeBase
       value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447430011456097145, guid: 113a9e695537e3d488467e666565f90a, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8869079558123158982, guid: 113a9e695537e3d488467e666565f90a, type: 3}
       propertyPath: m_Pivot.x
@@ -244,19 +280,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8869079558123158982, guid: 113a9e695537e3d488467e666565f90a, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8869079558123158982, guid: 113a9e695537e3d488467e666565f90a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8869079558123158982, guid: 113a9e695537e3d488467e666565f90a, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8869079558123158982, guid: 113a9e695537e3d488467e666565f90a, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8869079558123158982, guid: 113a9e695537e3d488467e666565f90a, type: 3}
       propertyPath: m_SizeDelta.x
@@ -296,11 +332,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8869079558123158982, guid: 113a9e695537e3d488467e666565f90a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -100.1
+      value: 345.9
       objectReference: {fileID: 0}
     - target: {fileID: 8869079558123158982, guid: 113a9e695537e3d488467e666565f90a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 150.7
+      value: -53.63333
       objectReference: {fileID: 0}
     - target: {fileID: 8869079558123158982, guid: 113a9e695537e3d488467e666565f90a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
