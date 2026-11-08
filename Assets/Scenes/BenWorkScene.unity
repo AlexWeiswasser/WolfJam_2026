@@ -1081,7 +1081,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHandler
   draggingCircle: {fileID: 1674526990}
   lampRoom: {fileID: 1156541554}
-  lightBeamSpeed: 50
+  lightBeamSpeed: 90
   boatLayer:
     serializedVersion: 2
     m_Bits: 64
