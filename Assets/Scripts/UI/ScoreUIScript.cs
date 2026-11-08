@@ -10,8 +10,10 @@ public class ScoreUIScript : MonoBehaviour
     [SerializeField] float timeBetweenPoints = 0.05f;
     [SerializeField] int pointDifToGoDoubleSpeed = 50;
     [SerializeField] int pointDifToGoTripleSpeed = 100;
+    [SerializeField] int pointDifToGoASAP = 250;
     bool doubleSpeed = false;
     bool tripleSpeed = false;
+    bool asap = false;
     float accumulator = 0;
 
     void OnEnable()
@@ -34,6 +36,7 @@ public class ScoreUIScript : MonoBehaviour
     {
         float timeBetween = doubleSpeed ? timeBetweenPoints * 0.5f : timeBetweenPoints;
         timeBetween = tripleSpeed ? timeBetweenPoints * 0.333f : timeBetween;
+        timeBetween = asap ? timeBetweenPoints * 0.02f : timeBetween;
         if (accumulator < timeBetween)
         {
             accumulator += Time.deltaTime;
@@ -45,6 +48,7 @@ public class ScoreUIScript : MonoBehaviour
         if (internalPointCount < currentTargetPoints)
         {
             internalPointCount += pointsGainedThisFrame;
+            if (internalPointCount > currentTargetPoints) internalPointCount = currentTargetPoints;
             UpdateText();
         }
         else if (internalPointCount > currentTargetPoints)
@@ -52,11 +56,13 @@ public class ScoreUIScript : MonoBehaviour
             internalPointCount = currentTargetPoints;
             doubleSpeed = false;
             tripleSpeed = false;
+            asap = false;
         }
         else
         {
             doubleSpeed = false;
             tripleSpeed = false;
+            asap = false;
         }
     }
 
@@ -65,6 +71,7 @@ public class ScoreUIScript : MonoBehaviour
         currentTargetPoints = range.y;
         if (currentTargetPoints - pointDifToGoDoubleSpeed > internalPointCount) doubleSpeed = true;
         if (currentTargetPoints - pointDifToGoTripleSpeed > internalPointCount) tripleSpeed = true;
+        if (currentTargetPoints - pointDifToGoASAP > internalPointCount) asap = true;
     }
 
     void UpdateText()
