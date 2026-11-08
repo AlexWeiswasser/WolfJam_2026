@@ -32,6 +32,7 @@ public class BoatScript : MonoBehaviour
 	[SerializeField] AudioClip[] skeletonSounds;
 	[SerializeField] AudioClip boatCrash;
     [SerializeField] AudioClip scorePoint;
+    [SerializeField] AudioClip defaultDash;
 	[SerializeField] float sfxCooldown;
 	private bool canPlaySound = true;
 
@@ -122,6 +123,8 @@ public class BoatScript : MonoBehaviour
 			canPlaySound = false;
 			StartCoroutine(WaitForSeconds(sfxCooldown));
 		}
+		else
+			MusicManager.Instance.PlaySfx(defaultDash);
 
 		burstParticles.Clear();
 		burstParticles.Play();
