@@ -64,32 +64,46 @@ public class MusicManager : MonoBehaviour
             AudioClip clip = null;
             switch (musicState)
             {
-                case 0:
-                    clip = introMusic;
-                    break;
-                case 1:
-                    clip = transitionMusic;
-                    SetState(2);
-                    break;
-                case 2:
-                    clip = gameLoopMusic;
-                    break;
-                default:
-                    break;
+                case 0: clip = introMusic; break;
+                case 1: clip = transitionMusic; SetState(2); break;
+                case 2: clip = gameLoopMusic; break;
             }
 
             if (clip == null)
                 yield break;
 
+            // Make sure the clip is actually loaded (async on WebGL)
+            if (clip.loadState != AudioDataLoadState.Loaded)
+                clip.LoadAudioData();
+            while (clip.loadState == AudioDataLoadState.Loading)
+                yield return null;
+            if (clip.loadState != AudioDataLoadState.Loaded || clip.length <= 0f)
+            {
+                yield return null; // never spin without yielding
+                continue;
+            }
+
             AudioSource src = musicSources[activeSource];
             src.clip = clip;
-            src.PlayScheduled(nextStartTime);
 
+    #if UNITY_WEBGL && !UNITY_EDITOR
+            // WebGL: simple sequential playback
+            src.Play();
+            yield return null;
+            while (src.isPlaying)
+                yield return null;
+    #else
+            // Other platforms: gapless scheduled playback
+            if (nextStartTime < AudioSettings.dspTime)
+                nextStartTime = AudioSettings.dspTime + 0.1;
+
+            src.PlayScheduled(nextStartTime);
             nextStartTime += (double)clip.samples / clip.frequency;
             activeSource = 1 - activeSource;
 
             while (AudioSettings.dspTime < nextStartTime - ScheduleLead)
                 yield return null;
+    #endif
         }
     }
 
